@@ -1,0 +1,31 @@
+OBJ_DIR := ./obj/
+LOGS_DIR:= ./logs/	
+SRC_DIR	:= ./
+I_FLAG 	:= ./# -I/usr/include/
+CC 		:= g++
+SFML_FLAGS := #-lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+CFLAGS     := -Wno-format -g -fsanitize=address
+CFLAGS_NO_SANITIZER := -Wno-format -g
+
+H_TAB_EXE   := hash_table
+
+SRC    := $(wildcard $(SRC_DIR)*.cpp)
+OBJ    := $(patsubst $(SRC_DIR)%.cpp,  $(OBJ_DIR)%.o, $(SRC))
+
+all : $(H_TAB_EXE)
+
+run: $(H_TAB_EXE)
+	@./$(H_TAB_EXE)
+
+$(H_TAB_EXE): $(OBJ)
+	@$(CC) $(CFLAGS) $(SFML_FLAGS) $(OBJ) -o $(H_TAB_EXE)
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
+	@$(CC) $(CFLAGS) $(I_FLAG) -c $< -o $@
+
+mkdir :
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(LOGS_DIR)
+
+clean :
+	@rm $(H_TAB_EXE) $(OBJ_DIR)*.o 
