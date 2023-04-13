@@ -43,17 +43,16 @@ int processData(const char * text_file_name, const char * processed_file_name, s
     size_t buf_idx = 0;
     size_t idx = 0;
 
-    
     for (; idx < capacity && buf_idx < text_data.buf_length; )
     {
         while(isspace(text_data.buf[buf_idx]))
             buf_idx++;
 
-        char * next_tok = strtok(&text_data.buf[buf_idx], " ….,\n\0");
+        char * next_tok = strtok(&text_data.buf[buf_idx], " .….,—\n\0");
         size_t shift = strlen(next_tok) + 1;
 
         // printf("buf_idx = %lu, token = \"%s\"\n", buf_idx, next_tok);
-        // printf("buf_remainder: \n\e[0;32m%s\n\e[0m\n", &text_data.buf[buf_idx] + shift);
+        // printf("buf_remainder: \n\e[0;32m%s\n\e[0m\n", &text_data.buf[buf_idx]+shift);
         
         if (next_tok)
             buf_idx += shift; 
@@ -78,12 +77,14 @@ int processData(const char * text_file_name, const char * processed_file_name, s
     tokens = (char **)realloc(tokens, (capacity)*sizeof(char*));
 
     PRINT_LOG("tokens of %s : \n", text_file_name);
+    PRINT_LOG("max_length = %lu\n", max_str_length);
     PRINT_LOG("capacity = %lu\n", capacity);
 
     for(int counter = 0; counter < capacity; counter++)
         PRINT_LOG("|%s|\t", tokens[counter]);
     
     PRINT_LOG("\n");
+    saveTokensToBinFile(processed_file_name, tokens, max_str_length, capacity);
 
     free(tokens);
     textDtor(&text_data);
@@ -92,8 +93,7 @@ int processData(const char * text_file_name, const char * processed_file_name, s
     return 0;
 }
 
-Hash_Table * formTable(const char * data_file_name, size_t max_str_length, 
-                            size_t table_size, int (*hash_func)(const char *))
+Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*hash_func)(const char *))
 {
     Hash_Table * table = (Hash_Table *)calloc(1, sizeof(Hash_Table));
 

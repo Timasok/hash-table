@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <math.h>
 
+#include "general_debug.h"
 #include "lexical_analysis.h"
 
 const char *deleteSpaces(const char *str)
@@ -111,6 +112,32 @@ bool checkToken(const char *str)
 bool checkTokenLength(const char *str, size_t max_str_length)
 {
     return (strlen(str) < max_str_length) ? true : false;
+}
+
+int saveTokensToBinFile(const char * processed_file_name, char ** tokens, size_t max_str_length, size_t capacity)
+{
+    ASSERT_ASS(processed_file_name);
+    FILE *data_file = fopen(processed_file_name, "wb");
+
+    //format: max_str_length + capacity + buffer
+    char * buf = (char *)calloc(2*sizeof(size_t) + max_str_length*capacity*sizeof(char), 1);
+
+    ((size_t *)buf)[0] = max_str_length;
+    ((size_t *)buf)[1] = capacity;
+
+    size_t header_len = 2*sizeof(size_t);
+
+    for (size_t counter = 0; counter < capacity; counter++)
+    {
+        // printf("%s, %lu\n", tokens[counter], max_str_length);
+        strncpy(&buf[header_len+counter*max_str_length], tokens[counter], max_str_length);
+    }
+
+    fwrite(buf, 2*sizeof(size_t) + max_str_length*capacity*sizeof(char), 1, data_file);
+    free(buf);
+    fclose(data_file);
+
+    return 0;
 }
 
 char *getStrTok(char *line)
