@@ -35,16 +35,16 @@ $(H_TAB_EXE) : $(ALL_OBJ)
 	@$(CC) $(CFLAGS) $(ALL_OBJ) -o $(H_TAB_EXE)
 
 $(OBJ_DIR)%.o : $(HASH_DIR)%.cpp
-	@$(CC) $(I_FLAG) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o : $(LIST_DIR)%.cpp
-	@$(CC) $(I_FLAG) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o : $(STK_DIR)%.cpp
-	@$(CC) $(I_FLAG) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o : $(LIB_DIR)%.cpp
-	@$(CC) $(I_FLAG) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
 
 mkdir :
 	@mkdir -p $(GRAPH_DUMP_DIR)
