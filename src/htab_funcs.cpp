@@ -48,7 +48,7 @@ int processData(const char * text_file_name, const char * processed_file_name, s
         while(isspace(text_data.buf[buf_idx]))
             buf_idx++;
 
-        char * next_tok = strtok(&text_data.buf[buf_idx], " .….,—\n\0");
+        char * next_tok = strtok(&text_data.buf[buf_idx], " .….,—\n\0;");
         size_t shift = strlen(next_tok) + 1;
 
         // printf("buf_idx = %lu, token = \"%s\"\n", buf_idx, next_tok);
@@ -96,13 +96,57 @@ int processData(const char * text_file_name, const char * processed_file_name, s
 Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*hash_func)(const char *))
 {
     Hash_Table * table = (Hash_Table *)calloc(1, sizeof(Hash_Table));
+    table->list = (List *)calloc(table_size, sizeof(List));
+
+    FILE * data_file = fopen(data_file_name, "rb");
+    size_t data_header[2] = {};
+    fread(data_header, sizeof(size_t), 2, data_file);
+
+    size_t max_str_length = data_header[0];
+    size_t number_of_words = data_header[1];
+
+    size_t file_length = number_of_words*max_str_length + 2*sizeof(size_t);
+
+    char * file_buf = (char *)calloc(file_length, sizeof(char));
+
+    fread(file_buf, sizeof(char), file_length, data_file);
+    
+    // for(int i = 0; i < file_length; i++)
+    //     putchar(file_buf[i]);
+
+    fclose(data_file);
+
+    const char * words = file_buf + 2*sizeof(size_t);
+    const char * word = 0;
+    int list_idx = 0;
+
+    for(int counter = 0; counter < number_of_words; counter++)
+    {
+        word = words+counter*max_str_length;
+
+        for(int i = 0; i < max_str_length; i++)
+            putchar(word[i]);
+
+        // STRING_DUMP(word);
+        // list_idx = hash_func(word)%table->size;
+        // printf("HASH(%s)%%%d = %d\n", word, table->size, list_idx);
+        // free(word);
+        // LIST_ADD_AFTER(table->list[list_idx], word, 0);
+    
+    }
+    
+    // LIST_CTOR();
+
+    free(file_buf);
 
     return table;
 }
 
 int tableDtor(Hash_Table ** table)
 {
+    free((*table)->list);
     free(*table);
+    table = nullptr;
     return 0;
 }
 

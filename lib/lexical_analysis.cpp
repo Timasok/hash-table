@@ -96,8 +96,8 @@ bool checkToken(const char *str)
     if (!str)
         return false;
 
-    size_t number_of_poisons = 3;
-    char poison[] = {'[', ']', '\''};
+    size_t number_of_poisons = 7;
+    char poison[] = {'[', ']', '\'', '\"', '?', '!', ')'};
 
     for (size_t counter = 0; counter < number_of_poisons; counter++)
     {
