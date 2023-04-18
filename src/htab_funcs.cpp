@@ -95,8 +95,13 @@ int processData(const char * text_file_name, const char * processed_file_name, s
 
 Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*hash_func)(const char *))
 {
+    openLogs();
+
     Hash_Table * table = (Hash_Table *)calloc(1, sizeof(Hash_Table));
+    table->size = table_size;
     table->list = (List *)calloc(table_size, sizeof(List));
+    for(int idx = 0; idx < table_size; idx++)
+        LIST_CTOR(table->list[idx], 1);
 
     FILE * data_file = fopen(data_file_name, "rb");
     size_t data_header[2] = {};
@@ -120,18 +125,18 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*has
     const char * word = 0;
     int list_idx = 0;
 
-    for(int counter = 0; counter < number_of_words; counter++)
+    for(int counter = 0; counter < number_of_words-2; counter++)
     {
         word = words+counter*max_str_length;
 
-        for(int i = 0; i < max_str_length; i++)
-            putchar(word[i]);
+        // for(int i = 0; i < max_str_length; i++)
+        //     putchar(word[i]);
 
-        // STRING_DUMP(word);
-        // list_idx = hash_func(word)%table->size;
-        // printf("HASH(%s)%%%d = %d\n", word, table->size, list_idx);
+        list_idx = hash_func(word)%table_size;
+
+        // printf("HASH(%s) = %d\n", word, list_idx);
         // free(word);
-        // LIST_ADD_AFTER(table->list[list_idx], word, 0);
+        LIST_ADD_AFTER(&table->list[list_idx], word, 0);
     
     }
     
@@ -144,6 +149,9 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*has
 
 int tableDtor(Hash_Table ** table)
 {
+    closeLogs();
+    for(int idx = 0; idx < (*table)->size; idx++)
+        listDtor(&((*table)->list[idx]));
     free((*table)->list);
     free(*table);
     table = nullptr;

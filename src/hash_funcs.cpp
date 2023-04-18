@@ -24,6 +24,7 @@ int hash_3(const char * string)
 int hash_4(const char * string)
 {
     ASSERT_ASS(string);
+    // STRING_DUMP(string);
     
     int result = 0;
     int idx = 0;

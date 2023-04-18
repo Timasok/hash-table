@@ -1,0 +1,2001 @@
+
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000010]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000050]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000090]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000000d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000110]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000150]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000190]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000001d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000210]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000250]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000290]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000002d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000310]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000350]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000390]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000003d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000410]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000450]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000490]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000004d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000510]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000550]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000590]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000005d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000610]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000650]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000690]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000006d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000710]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000750]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000790]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000007d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000810]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000850]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000890]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000008d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000910]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000950]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000990]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000009d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000a10]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000a50]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000a90]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000ad0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000b10]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000b50]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000b90]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000bd0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000c10]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000c50]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000c90]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000cd0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000d10]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000d50]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000d90]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000dd0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000e10]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000e50]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000e90]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000ed0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000f10]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000f50]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000f90]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000000fd0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001010]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001050]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001090]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000010d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001110]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001150]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001190]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000011d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001210]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001250]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001290]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000012d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001310]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001350]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001390]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000013d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001410]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001450]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001490]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000014d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001510]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001550]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001590]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000015d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001610]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001650]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001690]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000016d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001710]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001750]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001790]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000017d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001810]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001850]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x602000001890]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************
+		DUMP CALLED at file: lib/list/src/funcs_list.cpp func: listCtor line: 58
+{
+size = 0
+elements[0x6020000018d0]
+code_of_error = 0
+	}
+
+*****************
+          _______
+		  |
+          _______
+INDEX  :  |    0|
+          _______
+VALUES :  |  À  |
+          _______
+NEXT   :  |   -1|
+          _______
+PREV   :  |   -1|
+          _______
+*****************

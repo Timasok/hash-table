@@ -3,7 +3,7 @@
 
 struct Hash_Table
 {
-    size_t size;
+    int size;
     size_t max_str_length;
     List * list;
 
