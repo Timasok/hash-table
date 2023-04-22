@@ -10,6 +10,9 @@
 
 static FILE * h_tab_logs = 0;
 
+#define HASH_FUNC_NAME(hash_func)                                      \
+            #hash_func
+
 #define PRINT_LOG(...)                                                  \
         do {                                                            \
             fprintf(h_tab_logs, __VA_ARGS__);                            \
@@ -100,8 +103,12 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*has
     Hash_Table * table = (Hash_Table *)calloc(1, sizeof(Hash_Table));
     table->size = table_size;
     table->list = (List *)calloc(table_size, sizeof(List));
+
     for(int idx = 0; idx < table_size; idx++)
-        LIST_CTOR(table->list[idx], 1);
+    {
+        LIST_CTOR(table->list[idx], 2);
+        table->list[idx].idx_in_table = idx;
+    }
 
     FILE * data_file = fopen(data_file_name, "rb");
     size_t data_header[2] = {};
@@ -116,9 +123,6 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*has
 
     fread(file_buf, sizeof(char), file_length, data_file);
     
-    // for(int i = 0; i < file_length; i++)
-    //     putchar(file_buf[i]);
-
     fclose(data_file);
 
     const char * words = file_buf + 2*sizeof(size_t);
@@ -129,22 +133,55 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*has
     {
         word = words+counter*max_str_length;
 
-        // for(int i = 0; i < max_str_length; i++)
-        //     putchar(word[i]);
-
         list_idx = hash_func(word)%table_size;
 
         // printf("HASH(%s) = %d\n", word, list_idx);
-        // free(word);
-        LIST_ADD_AFTER(&table->list[list_idx], word, 0);
+
+        List * cur_list = &table->list[list_idx];
+
+        if(cur_list->elements[0].next == -1)
+        {
+            cur_list->elements[1] = {.value = word, .next = 0, .prev = 0};
+            cur_list->elements[0] = {.value = "#", .next = 1, .prev = 1};
+            getNextFree(cur_list);             
+            cur_list->size++;
+            // printf("%s exists in list %d\n", word, list_idx);
+
+        } else if(!existsInList(cur_list, word))
+        {
+            // printf("%s exists in list %d\n", word, list_idx);
+            LIST_ADD_BEFORE(&table->list[list_idx], word, 0);
+            cur_list->size++;
+        }
     
     }
-    
-    // LIST_CTOR();
+    saveCSVFile(table, data_file_name);
 
     free(file_buf);
 
     return table;
+}
+
+int saveCSVFile(Hash_Table * table, const char * data_file_name)
+{
+    char CSV_name[MAX_WORD_LENGTH] = {};
+
+    char * source_name = strdup(data_file_name);
+    int initial_len = strlen(source_name);
+    source_name[initial_len-3] = '\0';                         // delete .pr
+    sprintf(CSV_name, "./%s-stat.csv", source_name);
+
+    FILE * CSV_file = fopen(CSV_name, "w+");
+    
+    for(int idx = 0; idx < table->size; idx++)
+    {
+        fprintf(CSV_file, "%d,%d\n", idx, table->list[idx].size);
+    }
+
+    fclose(CSV_file);
+    free(source_name);
+
+    return 0;
 }
 
 int tableDtor(Hash_Table ** table)

@@ -2,6 +2,7 @@
 #define TEXT_FUNCS_H
 
 #include <stdio.h>
+#include "config.h"
 
 struct  Text_info
 {
