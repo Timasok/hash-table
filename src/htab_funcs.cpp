@@ -173,6 +173,7 @@ int saveCSVFile(Hash_Table * table, const char * data_file_name)
 
     FILE * CSV_file = fopen(CSV_name, "w+");
     
+    fprintf(CSV_file, "index, chain length\n");
     for(int idx = 0; idx < table->size; idx++)
     {
         fprintf(CSV_file, "%d,%d\n", idx, table->list[idx].size);
