@@ -173,7 +173,7 @@ int saveCSVFile(Hash_Table * table, const char * data_file_name)
 
     FILE * CSV_file = fopen(CSV_name, "w+");
     
-    fprintf(CSV_file, "index, chain length\n");
+    // fprintf(CSV_file, "index, chain length\n");
     for(int idx = 0; idx < table->size; idx++)
     {
         fprintf(CSV_file, "%d,%d\n", idx, table->list[idx].size);
@@ -193,6 +193,16 @@ int tableDtor(Hash_Table ** table)
     free((*table)->list);
     free(*table);
     table = nullptr;
+    return 0;
+}
+
+int drawHistogram(const char * python_file_name, const char * hash_func_name)
+{
+    char comand[MAX_WORD_LENGTH] = {};
+
+    sprintf(comand, "python3 %s %s", python_file_name, hash_func_name);
+    system(comand);
+
     return 0;
 }
 

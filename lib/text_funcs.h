@@ -23,6 +23,17 @@ enum TEXT_ERRORS
     TEXT_ERROR_NUMBER_OF_LINES_IS_INAPROPRIATE  = 1 << 3, 
 };
 
+enum Newer_file
+{
+    FILE_1_ERROR =  -1,
+    FILE_2_ERROR =  -2,
+    FILE_1       =   1, 
+    FILE_2       =   2, 
+};
+
+bool isNewer(const char * file_1_name, const char * file_2_name);
+Newer_file getNewerFile(const char * file_1_name, const char * file_2_name);
+
 int textCtor(Text_info * text, const char * file_name);
 int textCtorOnlyBuffer(Text_info * text, const char * file_name);
 

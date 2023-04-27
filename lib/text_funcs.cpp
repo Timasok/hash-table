@@ -9,6 +9,62 @@ const char* TXT_BORDER = "******************************************************
 
 static FILE * text_logs = 0;
 
+Newer_file getNewerFile(const char * file_1_name, const char * file_2_name)
+{
+    // bool file_exist = 0;
+
+    // FILE * f = fopen(file_1_name, "r");
+    // file_exist = (f == nullptr);
+    // fclose(f);
+    // if(!file_exist)
+    //     return FILE_1_ERROR;
+
+    // f = fopen(file_2_name, "r");
+    // file_exist = (f == nullptr);
+    // fclose(f);
+    // if(!file_exist)
+    //     return FILE_2_ERROR;
+
+    struct stat data_1 = {};
+    struct stat data_2 = {};
+
+    stat(file_1_name, &data_1);
+    stat(file_2_name, &data_2);
+
+    if (data_1.st_mtim.tv_sec > data_2.st_mtim.tv_sec)
+    {
+        return FILE_1;
+
+    } else
+    {
+        return FILE_2;
+    }
+}
+
+bool isNewer(const char * file_1_name, const char * file_2_name)
+{
+    bool result = false;
+
+    switch(getNewerFile(file_1_name, file_1_name))
+    {
+        case FILE_1:
+            result = true;
+            break;
+        // case FILE_1_ERROR:
+        //     printf("\e[0;31mcannot open %s!\e[0m\n", file_1_name);
+        //     result = false;
+        //     break;
+        // case FILE_2_ERROR:
+        //     printf("\e[0;31mcannot open %s!\e[0m\n", file_2_name);
+        //     result = false;
+        //     break;
+        case FILE_2:
+            result = false;
+            break;
+    };
+    return result;
+}
+
 int openTextLogs()
 {
     text_logs = fopen("./logs/text_log.txt", "w+");
