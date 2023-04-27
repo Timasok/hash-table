@@ -10,12 +10,9 @@
 
 static FILE * h_tab_logs = 0;
 
-#define HASH_FUNC_NAME(hash_func)                                      \
-            #hash_func
-
 #define PRINT_LOG(...)                                                  \
         do {                                                            \
-            fprintf(h_tab_logs, __VA_ARGS__);                            \
+            fprintf(h_tab_logs, __VA_ARGS__);                           \
         } while(0)   
 
 static int openTextLogs()
@@ -96,7 +93,7 @@ int processData(const char * text_file_name, const char * processed_file_name, s
     return 0;
 }
 
-Hash_Table * formTable(const char * data_file_name, size_t table_size, int (*hash_func)(const char *))
+Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_t (*hash_func)(const char *))
 {
     openLogs();
 

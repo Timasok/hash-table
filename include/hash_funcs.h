@@ -1,10 +1,9 @@
+__uint32_t hash_1(const char *string);
+__uint32_t hash_first_letter(const char *string);
+__uint32_t hash_strlen(const char *string);
+__uint32_t hash_ascii_sum(const char *string);
 
-int hash_1(const char *string);
-int hash_2(const char *string);
-int hash_3(const char *string);
-int hash_4(const char *string);
+__uint32_t hash_rotate_right(const char *string);
+__uint32_t hash_rotate_left(const char *string);
 
-int hash_5(const char *string);
-int hash_6(const char *string);
-
-int hash_7(const char *string);
+__uint32_t hash_7(const char *string);

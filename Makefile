@@ -50,6 +50,7 @@ mkdir :
 	@mkdir -p $(GRAPH_DUMP_DIR)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(LOGS_DIR)
+	@mkdir -p analysis
 
 clean :
 	@rm $(H_TAB_EXE) $(OBJ_DIR)*.o 
