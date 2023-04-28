@@ -21,14 +21,14 @@ for i in range(len(data)):
     y_axis.append(data[i][1])
     x_axis.append(data[i][0]) 
 
-plt.bar(x_axis, y_axis, width = 0.6)
+plt.bar(x_axis, y_axis, width = 1)
 plt.xlabel('Index')
 plt.ylabel('Collisions')
 
 # plt.title(hash_name)
 
-plt.savefig(result_name)
+# plt.savefig(result_name)
 
-# plt.show()
+plt.show()
 # time.sleep(5)
 # plt.close()
