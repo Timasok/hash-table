@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #TODO make my own name of file
-data = np.genfromtxt('./data_files/Illmatic-stat.csv', delimiter=',')
+data = np.genfromtxt('./data_files/data.csv', delimiter=',')
 
 y_axis = []
 x_axis = []
@@ -27,8 +27,8 @@ plt.ylabel('Collisions')
 
 # plt.title(hash_name)
 
-# plt.savefig(result_name)
+plt.savefig(result_name)
 
-plt.show()
+# plt.show()
 # time.sleep(5)
 # plt.close()

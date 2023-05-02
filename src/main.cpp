@@ -1,8 +1,5 @@
 #include <stdio.h>
-
-#define HASH_FUNC_NAME(hash_func)                                       \
-            const char * hash_name = #hash_func;                        \
-            // unsigned int hash_name(const char *) = hash_func;     \
+#include <stdlib.h>
 
 #include "text_funcs.h"
 #include "hash_funcs.h"
@@ -12,17 +9,64 @@
 const char * mode_specs_file = "./config/mode_specifics.h";
 const char * python_graphics = "graphics.py";
 
-HASH_FUNC_NAME(hash_ascii_sum);
+static const int NUMBER_OF_HASH_FUNCS = 7;
+
+static struct
+{
+    __uint32_t (*hash_func[NUMBER_OF_HASH_FUNCS])(const char *) = {};
+    char ** hash_func_names = {};
+
+} Hash_funcs;
+
+static void fillHashFuncsArray()
+{
+    Hash_funcs.hash_func_names = (char **)calloc(NUMBER_OF_HASH_FUNCS, sizeof(char *));
+
+    Hash_funcs.hash_func[0] = hash_1;
+    Hash_funcs.hash_func_names[0] = strdup("hash_1");
+
+    Hash_funcs.hash_func[1] = hash_first_letter;
+    Hash_funcs.hash_func_names[1] = strdup("hash_first_letter");
+
+    Hash_funcs.hash_func[2] = hash_strlen;
+    Hash_funcs.hash_func_names[2] = strdup("hash_strlen");
+
+    Hash_funcs.hash_func[3] = hash_ascii_sum;
+    Hash_funcs.hash_func_names[3] = strdup("hash_ascii_sum");
+
+    Hash_funcs.hash_func[4] = hash_rotate_right;
+    Hash_funcs.hash_func_names[4] = strdup("hash_rotate_right");
+
+    Hash_funcs.hash_func[5] = hash_rotate_right;
+    Hash_funcs.hash_func_names[5] = strdup("hash_rotate_right");
+
+    Hash_funcs.hash_func[6] = hash_7;
+    Hash_funcs.hash_func_names[6] = strdup("hash_7");
+
+};
+
+static void destroyHashFuncsArray()
+{
+    for(int i = 0; i < NUMBER_OF_HASH_FUNCS; i++)
+        free(Hash_funcs.hash_func_names[i]);
+    free(Hash_funcs.hash_func_names);
+};
 
 int main()
 {
     if(isNewer(mode_specs_file, PROCESSED_DATA)); 
         processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
 
-    Hash_Table * tab_1 = formTable(PROCESSED_DATA, 1001, hash_ascii_sum);
-    printf("This is a victory!\n");
-    tableDtor(&tab_1);
+    fillHashFuncsArray();
 
-    drawHistogram(python_graphics, hash_name);
+    for (int idx = 0; idx < NUMBER_OF_HASH_FUNCS; idx++)
+    {
+        Hash_Table * tab_1 = formTable(PROCESSED_DATA, 1001, Hash_funcs.hash_func[idx]);
+        printf("This is a victory!\n");
+        tableDtor(&tab_1);
 
+        drawHistogram(python_graphics, Hash_funcs.hash_func_names[idx]);
+
+    }
+    destroyHashFuncsArray();
 }

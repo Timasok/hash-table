@@ -93,6 +93,7 @@ int processData(const char * text_file_name, const char * processed_file_name, s
     return 0;
 }
 
+//TODO разбить функцию на разделы
 Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_t (*hash_func)(const char *))
 {
     openLogs();
@@ -132,8 +133,6 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_
 
         list_idx = hash_func(word)%table_size;
 
-        // printf("HASH(%s) = %d\n", word, list_idx);
-
         List * cur_list = &table->list[list_idx];
 
         if(cur_list->elements[0].next == -1)
@@ -141,34 +140,37 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_
             cur_list->elements[1] = {.value = word, .next = 0, .prev = 0};
             cur_list->elements[0] = {.value = "#", .next = 1, .prev = 1};
             getNextFree(cur_list);             
+            
             cur_list->size++;
-            // printf("%s exists in list %d\n", word, list_idx);
+            table->number_of_words++;
 
         } else if(!existsInList(cur_list, word))
         {
-            // printf("%s exists in list %d\n", word, list_idx);
             LIST_ADD_BEFORE(&table->list[list_idx], word, 0);
+            
             cur_list->size++;
+            table->number_of_words++;
         }
     
     }
-    saveCSVFile(table, data_file_name);
+    saveCSVFile(table);
+    printf("table number of words = %lu\n", table->number_of_words);
 
     free(file_buf);
 
     return table;
 }
 
-int saveCSVFile(Hash_Table * table, const char * data_file_name)
+int saveCSVFile(Hash_Table * table)
 {
     char CSV_name[MAX_WORD_LENGTH] = {};
 
-    char * source_name = strdup(data_file_name);
-    int initial_len = strlen(source_name);
-    source_name[initial_len-3] = '\0';                         // delete .pr
-    sprintf(CSV_name, "./%s-stat.csv", source_name);
+    // char * source_name = strdup(data_file_name);
+    // int initial_len = strlen(source_name);
+    // source_name[initial_len-3] = '\0';                         // delete .pr
+    // sprintf(CSV_name, "./%s-stat.csv", source_name);
 
-    FILE * CSV_file = fopen(CSV_name, "w+");
+    FILE * CSV_file = fopen("./data_files/data.csv", "w+");
     
     // fprintf(CSV_file, "index, chain length\n");
     for(int idx = 0; idx < table->size; idx++)
@@ -177,7 +179,7 @@ int saveCSVFile(Hash_Table * table, const char * data_file_name)
     }
 
     fclose(CSV_file);
-    free(source_name);
+    // free(source_name);
 
     return 0;
 }
