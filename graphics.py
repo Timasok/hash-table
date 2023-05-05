@@ -19,7 +19,7 @@ result_name = "./analysis/" + hash_name + "-results.png"
 
 for i in range(len(data)):
     y_axis.append(data[i][1])
-    x_axis.append(data[i][0]) 
+    x_axis.append(data[i][0]+1) 
 
 plt.bar(x_axis, y_axis, width = 1)
 plt.xlabel('Index')

@@ -23,22 +23,22 @@ static void fillHashFuncsArray()
     Hash_funcs.hash_func_names = (char **)calloc(NUMBER_OF_HASH_FUNCS, sizeof(char *));
 
     Hash_funcs.hash_func[0] = hash_1;
-    Hash_funcs.hash_func_names[0] = strdup("hash_1");
+    Hash_funcs.hash_func_names[0] = strdup("hash const");
 
     Hash_funcs.hash_func[1] = hash_first_letter;
-    Hash_funcs.hash_func_names[1] = strdup("hash_first_letter");
+    Hash_funcs.hash_func_names[1] = strdup("hash first letter");
 
     Hash_funcs.hash_func[2] = hash_strlen;
-    Hash_funcs.hash_func_names[2] = strdup("hash_strlen");
+    Hash_funcs.hash_func_names[2] = strdup("hash strlen");
 
     Hash_funcs.hash_func[3] = hash_ascii_sum;
-    Hash_funcs.hash_func_names[3] = strdup("hash_ascii_sum");
+    Hash_funcs.hash_func_names[3] = strdup("hash ascii sum");
 
     Hash_funcs.hash_func[4] = hash_rotate_right;
-    Hash_funcs.hash_func_names[4] = strdup("hash_rotate_right");
+    Hash_funcs.hash_func_names[4] = strdup("hash rotate right");
 
-    Hash_funcs.hash_func[5] = hash_rotate_right;
-    Hash_funcs.hash_func_names[5] = strdup("hash_rotate_right");
+    Hash_funcs.hash_func[5] = hash_rotate_left;
+    Hash_funcs.hash_func_names[5] = strdup("hash rotate left");
 
     Hash_funcs.hash_func[6] = hash_7;
     Hash_funcs.hash_func_names[6] = strdup("hash_7");
@@ -54,14 +54,17 @@ static void destroyHashFuncsArray()
 
 int main()
 {
-    if(isNewer(mode_specs_file, PROCESSED_DATA)); 
-        processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
+    // if(isNewer(mode_specs_file, PROCESSED_DATA)); 
+    // {
+    //     printf("yo!\n");
+    //     processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
+    // }   
 
     fillHashFuncsArray();
 
     for (int idx = 0; idx < NUMBER_OF_HASH_FUNCS; idx++)
     {
-        Hash_Table * tab_1 = formTable(PROCESSED_DATA, 1001, Hash_funcs.hash_func[idx]);
+        Hash_Table * tab_1 = formTable(PROCESSED_DATA, 4409, Hash_funcs.hash_func[idx]);
         printf("This is a victory!\n");
         tableDtor(&tab_1);
 
