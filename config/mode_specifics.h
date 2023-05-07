@@ -11,8 +11,8 @@ const char * TEXT_DATA_PATH  = "data_files/Illmatic.txt";
 const char * PROCESSED_DATA  = "data_files/Illmatic.pr";
 
 #elif H_TAB_DATA == BOOK
-const char * TEXT_DATA_PATH  = "data_files/LOTR_THE_FELLOWSHIP_OF_THE_RING.txt";
-const char * PROCESSED_DATA  = "data_files/LOTR_THE_FELLOWSHIP_OF_THE_RING.pr";
+const char * TEXT_DATA_PATH  = "data_files/LOTR.txt";
+const char * PROCESSED_DATA  = "data_files/LOTR.pr";
 #endif
 
 const int MAX_STRING_LENGTH = 8;

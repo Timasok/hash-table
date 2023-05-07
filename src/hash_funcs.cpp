@@ -70,7 +70,14 @@ __uint32_t hash_rotate_left(const char *string)
     return hash;
 }
 
-__uint32_t hash_7(const char *string)
+__uint32_t hash_gnu(const char *string)
 {
-    return 0;
+    __uint32_t hash = 5381;
+
+    int idx = 0;
+
+    for(;string[idx] != '\0'; idx++)
+        hash = ((hash << 5) + hash) + string[idx];
+
+    return hash;
 }

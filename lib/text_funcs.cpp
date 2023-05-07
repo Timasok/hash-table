@@ -1,6 +1,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctime>
 
 #include "general_debug.h"
 #include "text_funcs.h"
@@ -11,19 +12,19 @@ static FILE * text_logs = 0;
 
 Newer_file getNewerFile(const char * file_1_name, const char * file_2_name)
 {
-    // bool file_exist = 0;
+    // struct stat attrib;
+    // stat(file_1_name, &attrib);
+    // char date[10];
+    // strftime(date, 10, "%d-%m-%y", gmtime(&(attrib.st_ctime)));
+    // printf("The file %s was last modified at %s\n", file_1_name, date);
+    // date[0] = 0;
 
-    // FILE * f = fopen(file_1_name, "r");
-    // file_exist = (f == nullptr);
-    // fclose(f);
-    // if(!file_exist)
-    //     return FILE_1_ERROR;
-
-    // f = fopen(file_2_name, "r");
-    // file_exist = (f == nullptr);
-    // fclose(f);
-    // if(!file_exist)
-    //     return FILE_2_ERROR;
+    // struct stat attr_1;
+    // stat(file_1_name, &attr_1);
+    // printf("Last modified time: %s", ctime(&attr_1.st_mtime));
+    // struct stat attr_2;
+    // stat(file_2_name, &attr_2);
+    // printf("Last modified time: %s", ctime(&attr_2.st_mtime));
 
     struct stat data_1 = {};
     struct stat data_2 = {};
@@ -31,14 +32,54 @@ Newer_file getNewerFile(const char * file_1_name, const char * file_2_name)
     stat(file_1_name, &data_1);
     stat(file_2_name, &data_2);
 
-    if (data_1.st_mtim.tv_sec > data_2.st_mtim.tv_sec)
+    tm * file_1_time = gmtime(&(data_1.st_ctim.tv_sec));
+    tm * file_2_time = gmtime(&(data_2.st_ctim.tv_sec));
+
+    printf("file_1 %lu, %lu, %lu, %lu\n", file_1_time->tm_yday, file_1_time->tm_hour
+                                        , file_1_time->tm_min, file_1_time->tm_sec);
+    printf("file_2 %lu, %lu, %lu, %lu\n", file_2_time->tm_yday, file_2_time->tm_hour
+                                        , file_2_time->tm_min, file_2_time->tm_sec);
+
+    if(file_1_time->tm_yday > file_2_time->tm_yday)
     {
         return FILE_1;
 
+    } else if(file_1_time->tm_yday == file_2_time->tm_yday)
+    {        
+        if(file_1_time->tm_hour > file_2_time->tm_hour)
+        {
+            return FILE_1;
+            
+        } else if(file_1_time->tm_hour == file_2_time->tm_hour)
+        {      
+            if(file_1_time->tm_min > file_2_time->tm_min)
+            {
+                return FILE_1;
+                
+            } else if(file_1_time->tm_min == file_2_time->tm_min)
+            {        
+                if(file_1_time->tm_sec > file_2_time->tm_sec)
+                {
+                    return FILE_1;
+                    
+                }else
+                {
+                    return FILE_2;
+                }
+            } else
+            {
+                return FILE_2;
+            }
+        } else
+        {
+            return FILE_2;
+        }
+    
     } else
     {
         return FILE_2;
     }
+
 }
 
 bool isNewer(const char * file_1_name, const char * file_2_name)

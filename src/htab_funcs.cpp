@@ -48,14 +48,13 @@ int processData(const char * text_file_name, const char * processed_file_name, s
         while(isspace(text_data.buf[buf_idx]))
             buf_idx++;
 
-        char * next_tok = strtok(&text_data.buf[buf_idx], " .….,—\n\0;");
-        size_t shift = strlen(next_tok) + 1;
+        char * next_tok = strtok(&text_data.buf[buf_idx], " _.….,—?!:;\n\0");
 
         // printf("buf_idx = %lu, token = \"%s\"\n", buf_idx, next_tok);
         // printf("buf_remainder: \n\e[0;32m%s\n\e[0m\n", &text_data.buf[buf_idx]+shift);
         
         if (next_tok)
-            buf_idx += shift; 
+            buf_idx += strlen(next_tok) + 1;
         else
             break;
 
@@ -154,7 +153,6 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_
     
     }
     saveCSVFile(table);
-    printf("table number of words = %lu\n", table->number_of_words);
 
     free(file_buf);
 
@@ -172,14 +170,16 @@ int saveCSVFile(Hash_Table * table)
 
     FILE * CSV_file = fopen("./data_files/data.csv", "w+");
     
+    fprintf(CSV_file, "TOTAL_WORDS, %lu\n", table->number_of_words);
+
     // fprintf(CSV_file, "index, chain length\n");
     for(int idx = 0; idx < table->size; idx++)
     {
         fprintf(CSV_file, "%d,%d\n", idx, table->list[idx].size);
+        // fprintf(CSV_file, "%d,%d\n", idx, table->number_of_words);
     }
 
     fclose(CSV_file);
-    // free(source_name);
 
     return 0;
 }
