@@ -117,7 +117,11 @@ bool checkTokenLength(const char *str, size_t max_str_length)
 int saveTokensToBinFile(const char * processed_file_name, char ** tokens, size_t max_str_length, size_t capacity)
 {
     ASSERT_ASS(processed_file_name);
-    FILE *data_file = fopen(processed_file_name, "wb");
+
+    char data_name[MAX_WORD_LENGTH] = {};
+    sprintf(data_name, "./%s_%lu.pr", processed_file_name, max_str_length);
+
+    FILE *data_file = fopen(data_name, "wb");
 
     //format: max_str_length + capacity + buffer
     char * buf = (char *)calloc(2*sizeof(size_t) + max_str_length*capacity*sizeof(char), 1);

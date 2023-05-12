@@ -6,7 +6,7 @@
 
 __uint32_t hash_1(const char * string)
 {
-    return 200;
+    return 1;
 }
 
 __uint32_t hash_first_letter(const char * string)

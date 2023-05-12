@@ -93,7 +93,7 @@ int processData(const char * text_file_name, const char * processed_file_name, s
 }
 
 //TODO разбить функцию на разделы
-Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_t (*hash_func)(const char *))
+Hash_Table * formTable(const char * processed_file_name, size_t table_size, __uint32_t (*hash_func)(const char *), size_t max_str_length)
 {
     openLogs();
 
@@ -107,14 +107,19 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_
         table->list[idx].idx_in_table = idx;
     }
 
-    FILE * data_file = fopen(data_file_name, "rb");
+    char data_name[MAX_WORD_LENGTH] = {};
+    sprintf(data_name, "./%s_%lu.pr", processed_file_name, max_str_length);
+    // STRING_DUMP(data_name);
+
+    FILE * data_file = fopen(data_name, "rb");
     size_t data_header[2] = {};
     fread(data_header, sizeof(size_t), 2, data_file);
 
-    size_t max_str_length = data_header[0];
+
+    size_t file_str_length = data_header[0];
     size_t number_of_words = data_header[1];
 
-    size_t file_length = number_of_words*max_str_length + 2*sizeof(size_t);
+    size_t file_length = number_of_words*file_str_length + 2*sizeof(size_t);
 
     char * file_buf = (char *)calloc(file_length, sizeof(char));
 
@@ -159,24 +164,31 @@ Hash_Table * formTable(const char * data_file_name, size_t table_size, __uint32_
     return table;
 }
 
+int refreshStatFile()
+{
+    FILE * STAT_file = fopen("./data_files/hash_funcs_cmp.csv", "w+");
+
+    ASSERT(STAT_file);
+
+    fprintf(STAT_file, "Hash func,Dispersion\n");
+    fclose(STAT_file);
+
+    return 0;
+
+}
+
 int saveCSVFile(Hash_Table * table)
 {
     char CSV_name[MAX_WORD_LENGTH] = {};
 
-    // char * source_name = strdup(data_file_name);
-    // int initial_len = strlen(source_name);
-    // source_name[initial_len-3] = '\0';                         // delete .pr
-    // sprintf(CSV_name, "./%s-stat.csv", source_name);
-
     FILE * CSV_file = fopen("./data_files/data.csv", "w+");
     
-    fprintf(CSV_file, "TOTAL_WORDS, %lu\n", table->number_of_words);
+    fprintf(CSV_file, "TOTAL_WORDS,%lu\n", table->number_of_words);
 
     // fprintf(CSV_file, "index, chain length\n");
     for(int idx = 0; idx < table->size; idx++)
     {
         fprintf(CSV_file, "%d,%d\n", idx, table->list[idx].size);
-        // fprintf(CSV_file, "%d,%d\n", idx, table->number_of_words);
     }
 
     fclose(CSV_file);
@@ -195,23 +207,27 @@ int tableDtor(Hash_Table ** table)
     return 0;
 }
 
-int drawHistogram(const char * python_file_name, const char * hash_func_name)
+int drawHistogram(const char * python_file_name, const char * hash_func_name, int plot_x_limit)
 {
     char comand[MAX_WORD_LENGTH] = {};
 
-    sprintf(comand, "python3 %s %s", python_file_name, hash_func_name);
+    sprintf(comand, "python3 %s %s %d", python_file_name, hash_func_name, plot_x_limit);
+    system(comand);
+
+    return 0;
+}
+
+int drawAnalysis(const char * analysis_file)
+{
+    char comand[MAX_WORD_LENGTH] = {};
+
+    sprintf(comand, "python3 %s", analysis_file);
     system(comand);
 
     return 0;
 }
 
 int getWord(Hash_Table * table, const char * string, int (*hash_func)(const char *))
-{
-
-    return 0;
-}
-
-int analysisTable(Hash_Table * table, const char * analysis_file)
 {
 
     return 0;
