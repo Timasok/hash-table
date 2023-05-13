@@ -72,7 +72,7 @@ __uint32_t hash_rotate_left(const char *string)
 
 __uint32_t hash_gnu(const char *string)
 {
-    __uint32_t hash = 5381;
+    __uint32_t hash = 1021;
 
     int idx = 0;
 

@@ -43,7 +43,7 @@
 ### Размер хэш-таблицы
 
 Для начала выберем размер таблицы(`TAB_SIZE`) таким образом, чтобы коэффициент заполнения(`a`) получился равен `15`. 
-$a = \frac{NUMBER_OF_ELEMENTS,TAB_SIZE} ->  TAB_SIZE = \frac{NUMBER_OF_ELEMENTS,a} =  \frac{1540,15} ≈ 1001$
+$a = \frac{NUMBER_OF_ELEMENTS}TAB_SIZE ->  TAB_SIZE = \frac{NUMBER_OF_ELEMENTS}a =  \frac{1540}15 ≈ 1021$
 
 Также необходимо размер таблицы округлить до простого числа, чтобы при вычислении хэш-кода `i` не возникло дополнительных коллизий. Например, если выполняются условия:
 + $hash(key_1) = hash(key_2)*C$ 
@@ -143,7 +143,7 @@ __uint32_t hash_rotate_left(const char *string)
 ```C++
 __uint32_t hash_gnu(const char *string)
 {
-    __uint32_t hash = 5381;         // стартовый размер таблицы
+    __uint32_t hash = 1021;         // стартовый размер таблицы
 
     int idx = 0;
 
@@ -158,9 +158,12 @@ __uint32_t hash_gnu(const char *string)
 
 ![GNU](analysis/GNU-results.png)
 
-### Результаты измерений
+### Сравнение дисперсии хэш-функций
 
 ![Dispersion](analysis/Dispersion-results.png)
+
+### Вывод
+
 
 
 ## Часть 2. Оптимизация поиска по хэш-таблице
