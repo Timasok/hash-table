@@ -28,7 +28,7 @@ static void fillHashFuncsArray(HF_info * hash_funcs_arr, int TAB_SIZE)
      hash_funcs_arr[0] = {.func_ptr = hash_1, .func_name = strdup("Const"), .plot_x_limit = 10};
      hash_funcs_arr[1] = {.func_ptr = hash_strlen, .func_name = strdup("Strlen"), .plot_x_limit = MAX_STRING_LENGTH+1};
      hash_funcs_arr[2] = {.func_ptr = hash_first_letter, .func_name = strdup("First_letter"), .plot_x_limit = 1<<8};
-     hash_funcs_arr[3] = {.func_ptr = hash_ascii_sum, .func_name = strdup("Ascii_sum"), .plot_x_limit = TAB_SIZE};
+     hash_funcs_arr[3] = {.func_ptr = hash_ascii_sum, .func_name = strdup("Ascii_sum"), .plot_x_limit = (TAB_SIZE < 2000) ? TAB_SIZE : 2000};
      hash_funcs_arr[4] = {.func_ptr = hash_rotate_right, .func_name = strdup("Rotate_right"), .plot_x_limit = TAB_SIZE};
      hash_funcs_arr[5] = {.func_ptr = hash_rotate_left, .func_name = strdup("Rotate_left"), .plot_x_limit = TAB_SIZE};
      hash_funcs_arr[6] = {.func_ptr = hash_gnu, .func_name = strdup("GNU"), .plot_x_limit = TAB_SIZE};
