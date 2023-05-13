@@ -9,16 +9,16 @@ __uint32_t hash_1(const char * string)
     return 1;
 }
 
-__uint32_t hash_first_letter(const char * string)
-{
-    // ASSERT_ASS(string);
-    return (__uint32_t)string[0];
-}
-
 __uint32_t hash_strlen(const char * string)
 {
     // ASSERT_ASS(string);
     return (__uint32_t)strlen(string);
+}
+
+__uint32_t hash_first_letter(const char * string)
+{
+    // ASSERT_ASS(string);
+    return (__uint32_t)string[0];
 }
 
 __uint32_t hash_ascii_sum(const char * string)

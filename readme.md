@@ -29,14 +29,130 @@
 
 ## Инструменты и экспериментальная установка
 
-## Данные
+Инструмент kachegrind.
 
 ## Ход работы
 
 ### Часть 1. Исследование хэш-функций
 
-#### Теоретическая справка
+#### Задача
 
+Изучить реализации различных хэш-функций. Сравить заселённость и дисперсию этих функций.  
+
+#### Данные и эксперементальная модель
+
+Трилогия Дж.Р.Р.Толкиена Властелин Колец в оригинале. Т.к. количество уникальных слов состовило `15410`, то для получения средней заселённости в `10-20` слов установим размер хэш-таблицы `1001`. 
+
+##### Хэш-первый буква
+
+Функция возвращает первый байт строки.
+
+```C++
+__uint32_t hash_first_letter(const char * string)
+{
+    return (__uint32_t)string[0];
+}
+```
+
+![First_letter](analysis/First_letter-results.png)
+
+##### Хэш-сумма
+
+Функция возвращает сумму ASCII кодов символов.
+
+```C++
+__uint32_t hash_ascii_sum(const char * string)
+{
+    __uint32_t result = 0;
+    int idx = 0;
+
+    for(;string[idx] != '\0'; idx++)
+        result += string[idx];
+
+    return result;
+}
+```
+
+![Ascii_sum](analysis/Ascii_sum-results.png)
+
+##### ROR-хэш
+
+Функция основана на алгоритме циклического сдвига вправо.
+
+```C++
+static inline __uint32_t ror(__uint32_t original, __uint32_t bits)  
+{
+    return (original >> bits) | (original << (32 - bits));
+
+}
+
+__uint32_t hash_rotate_right(const char *string)
+{
+    __uint32_t hash = 0;
+    
+    while(*string)
+    {
+        hash = ror(hash, 1)^*(string++);
+    }
+
+    return hash;
+}
+```
+
+Заселённость хэш-таблицы с ROR-хэш:
+
+![Rotate_right](analysis/Rotate_right-results.png)
+
+##### ROL-хэш
+
+Функция основана на алгоритме циклического сдвига влево.
+
+```C++
+static inline __uint32_t rol(__uint32_t original, __uint32_t bits)  
+{
+    return (original << bits) | (original >> (32 - bits));
+}
+
+__uint32_t hash_rotate_left(const char *string)
+{
+    __uint32_t hash = 0;
+    
+    while(*string)
+    {
+        hash = rol(hash, 1)^*(string++);
+    }
+
+    return hash;
+}
+```
+
+Заселённость хэш-таблицы с ROR-хэш:
+
+![Rotate_left](analysis/Rotate_left-results.png)
+
+##### GNU-хэш
+
+```C++
+__uint32_t hash_gnu(const char *string)
+{
+    __uint32_t hash = 5381;         // стартовый размер таблицы
+
+    int idx = 0;
+
+    for(;string[idx] != '\0'; idx++)
+        hash = ((hash << 5) + hash) + string[idx];
+
+    return hash;
+}
+```
+
+Заселённость хэш-таблицы с GNU хэш:
+
+![GNU](analysis/GNU-results.png)
+
+#### Результаты измерений
+
+![Dispersion](analysis/Dispersion-results.png)
 
 Если хэш функция хорошая, то количество пар с одинаковым хэключом может быть 
 
