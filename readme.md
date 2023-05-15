@@ -49,15 +49,18 @@
 ### Размер хэш-таблицы
 
 Для начала выберем размер таблицы(`TAB_SIZE`) таким образом, чтобы коэффициент заполнения(`a`) получился равен `15`. 
+
 $a = \frac{WORDS_{NUMBER}}{TAB_{SIZE}} ->  TAB_{SIZE} = \frac{WORDS_{NUMBER}}{a} =  \frac{1540}{15} ≈ 1021$
 
 Также необходимо размер таблицы округлить до простого числа, чтобы при вычислении хэш-кода `i` не возникло дополнительных коллизий. Например, если выполняются условия:
 + $hash(key_1) = hash(key_2)*C$ 
 + $hash(key_1) > TAB_{SIZE}$ 
 + $TAB_{SIZE}  ⁞  С$
-то пары с ключами 1 и 2 попадут в один список.
 
-### Хэш-первая буква
+то $i_1 = i_2$
+, что означает коллизию.
+
+3. ### Хэш-первая буква
 
 Функция возвращает первый байт строки.
 
@@ -68,9 +71,11 @@ __uint32_t hash_first_letter(const char * string)
 }
 ```
 
+Заселённость хэш-таблицы с const-хэш:
+
 ![First_letter](analysis/First_letter-results.png)
 
-### Хэш-сумма
+4. ### Хэш-сумма
 
 Функция возвращает сумму ASCII кодов символов.
 
@@ -87,9 +92,11 @@ __uint32_t hash_ascii_sum(const char * string)
 }
 ```
 
+Заселённость хэш-таблицы с Ascii sum-хэш:
+
 ![Ascii_sum](analysis/Ascii_sum-results.png)
 
-### ROR-хэш
+5. ### ROR-хэш
 
 Функция основана на алгоритме циклического сдвига вправо.
 
@@ -117,7 +124,7 @@ __uint32_t hash_rotate_right(const char *string)
 
 ![Rotate_right](analysis/Rotate_right-results.png)
 
-### ROL-хэш
+6. ### ROL-хэш
 
 Функция основана на алгоритме циклического сдвига влево.
 
@@ -144,7 +151,7 @@ __uint32_t hash_rotate_left(const char *string)
 
 ![Rotate_left](analysis/Rotate_left-results.png)
 
-### GNU-хэш
+7. ### GNU-хэш
 
 ```C++
 __uint32_t hash_gnu(const char *string)
