@@ -8,6 +8,8 @@
 // #include "time_measure.h"
 
 const char * mode_specs_file = "./config/mode_specifics.h";
+const char * alternative_words_source = "./data_files/Hamlet.txt";
+const char * find_tests_data = "./data_files/find_tests.txt";
 const char * python_graphics = "./py_utils/graphics.py";
 const char * python_stats = "./py_utils/statistics.py";
 
@@ -76,7 +78,8 @@ inline int stopTimer(Timer ** timer)
 #define CMP_HASH_FUNCS 1
 #define OPTIMIZE_FIND 2
 
-#define H_TAB_MODE CMP_HASH_FUNCS
+#define H_TAB_MODE OPTIMIZE_FIND
+// #define H_TAB_MODE CMP_HASH_FUNCS
 
 #define MEASURE_TIME(time_diff, oper, code)                               \
         Timer * timer = (Timer *)calloc(1, sizeof(Timer));          \
@@ -91,8 +94,36 @@ inline int stopTimer(Timer ** timer)
 
 int main(int argc, const char ** argv)
 {
-    // if(isNewer(mode_specifics, PROCESSED_DATA)); 
-        // processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
+
+#if defined PROCESS_DATA
+    if(isNewer(mode_specifics, PROCESSED_DATA)); 
+        processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
+#endif
+
+#if H_TAB_MODE == OPTIMIZE_FIND
+
+    int TAB_SIZE = 1021;
+    int STR_LENGTH = 16;
+    int NUMBER_OF_TESTS = 500;
+
+    if(argc>=2 && *(argv[1]))
+    {
+        TAB_SIZE = atoi(argv[1]); 
+        if(argc >= 2)
+        {
+            STR_LENGTH = atoi(argv[2]);
+            if(argc >= 3)
+                NUMBER_OF_TESTS = atoi(argv[3]);
+        }
+    }
+
+    // prepareFindTests(PROCESSED_DATA, find_tests_data, alternative_words_source, STR_LENGTH, NUMBER_OF_TESTS);
+
+    Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
+    makeExperiment(tab, find_tests_data, STR_LENGTH);
+    tableDtor(&tab);
+
+#elif H_TAB_MODE == CMP_HASH_FUNCS
 
     int TAB_SIZE = 1021;
     int STR_LENGTH = 16;
@@ -103,10 +134,6 @@ int main(int argc, const char ** argv)
         if(argc >= 2)
             STR_LENGTH = atoi(argv[2]);
     }
-
-#if H_TAB_MODE == OPTIMIZE_FIND
-
-#elif H_TAB_MODE == CMP_HASH_FUNCS
 
     HF_info  hash_funcs_arr[NUMBER_OF_HASH_FUNCS] = {};
     fillHashFuncsArray(hash_funcs_arr, TAB_SIZE);

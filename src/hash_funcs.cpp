@@ -41,11 +41,6 @@ static inline __uint32_t ror(__uint32_t original, __uint32_t bits)
 
 }
 
-static inline __uint32_t rol(__uint32_t original, __uint32_t bits)  
-{
-    return (original << bits) | (original >> (32 - bits));
-}
-
 __uint32_t hash_rotate_right(const char *string)
 {
     __uint32_t hash = 0;
@@ -56,6 +51,11 @@ __uint32_t hash_rotate_right(const char *string)
     }
 
     return hash;
+}
+
+static inline __uint32_t rol(__uint32_t original, __uint32_t bits)  
+{
+    return (original << bits) | (original >> (32 - bits));
 }
 
 __uint32_t hash_rotate_left(const char *string)

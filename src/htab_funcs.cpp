@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <time.h>
 
 #include "general_debug.h"
 #include "htab_funcs.h"
@@ -92,11 +93,86 @@ int processData(const char * text_file_name, const char * processed_file_name, s
     return 0;
 }
 
-//TODO разбить функцию на разделы
-Hash_Table * formTable(const char * processed_file_name, size_t table_size, __uint32_t (*hash_func)(const char *), size_t max_str_length)
+int prepareFindTests(const char * htab_data_file, const char * tests_file, const char * text_file_name, size_t max_str_length, size_t number_of_tests)
 {
-    openLogs();
+    openTextLogs();
 
+    Text_info text_data = {};
+
+    textCtorOnlyBuffer(&text_data, text_file_name);
+    printText(&text_data);
+
+    ASSERT(number_of_tests < text_data.buf_length);
+
+    size_t capacity = number_of_tests;
+
+    char ** tokens = (char **)calloc(capacity, sizeof(char*));
+
+    size_t buf_idx = 0;
+    size_t idx = 0;
+
+    for (; idx < capacity/2 && buf_idx < text_data.buf_length; )
+    {
+        while(isspace(text_data.buf[buf_idx]))
+            buf_idx++;
+
+        char * next_tok = strtok(&text_data.buf[buf_idx], " _.….,—?!:;\n\0");
+
+        // printf("buf_idx = %lu, token = \"%s\"\n", buf_idx, next_tok);
+        // printf("buf_remainder: \n\e[0;32m%s\n\e[0m\n", &text_data.buf[buf_idx]+shift);
+        
+        if (next_tok)
+            buf_idx += strlen(next_tok) + 1;
+        else
+            break;
+
+        if (isalpha(*next_tok))
+        {
+            if (!checkToken(next_tok))
+                continue;
+                
+            if (checkTokenLength(next_tok, max_str_length))
+            {
+                tokens[idx] = next_tok;
+                idx++;
+            }
+        }
+
+    }
+
+    PRINT_LOG("tokens of %s : \n", text_file_name);
+    PRINT_LOG("max_length = %lu\n", max_str_length);
+    PRINT_LOG("capacity = %lu\n", capacity);
+
+    for(int counter = 0; counter < capacity; counter++)
+        PRINT_LOG("|%s|\t", tokens[counter]);
+    
+    PRINT_LOG("\n");
+
+
+    size_t number_of_words = 0;
+    char * file_buf = get_file_buffer(htab_data_file, max_str_length, &number_of_words);
+    srand ( time(NULL) );
+    
+    for(size_t idx = capacity/2 - 1; idx < capacity; idx++)
+    {
+        size_t random_index = rand()%number_of_words;
+
+        tokens[idx] = file_buf + 2*sizeof(size_t) + random_index*max_str_length;
+    }
+
+    saveTokensToBinFile(tests_file, tokens, max_str_length, capacity);
+
+    free(tokens);
+    free(file_buf);
+    textDtor(&text_data);
+
+    closeTextLogs();
+    return 0;
+}
+
+Hash_Table * tableCtor(size_t table_size)
+{
     Hash_Table * table = (Hash_Table *)calloc(1, sizeof(Hash_Table));
     table->size = table_size;
     table->list = (List *)calloc(table_size, sizeof(List));
@@ -107,6 +183,11 @@ Hash_Table * formTable(const char * processed_file_name, size_t table_size, __ui
         table->list[idx].idx_in_table = idx;
     }
 
+    return table;
+}
+
+char * get_file_buffer(const char * processed_file_name, size_t max_str_length, size_t *number_of_words)
+{
     char data_name[MAX_WORD_LENGTH] = {};
     sprintf(data_name, "./%s_%lu.pr", processed_file_name, max_str_length);
     // STRING_DUMP(data_name);
@@ -115,17 +196,28 @@ Hash_Table * formTable(const char * processed_file_name, size_t table_size, __ui
     size_t data_header[2] = {};
     fread(data_header, sizeof(size_t), 2, data_file);
 
-
     size_t file_str_length = data_header[0];
-    size_t number_of_words = data_header[1];
+    *number_of_words = data_header[1];
 
-    size_t file_length = number_of_words*file_str_length + 2*sizeof(size_t);
+    size_t file_length = (*number_of_words)*file_str_length + 2*sizeof(size_t);
 
     char * file_buf = (char *)calloc(file_length, sizeof(char));
 
     fread(file_buf, sizeof(char), file_length, data_file);
     
     fclose(data_file);
+
+    return file_buf;
+}
+
+Hash_Table * formTable(const char * processed_file_name, size_t table_size, __uint32_t (*hash_func)(const char *), size_t max_str_length)
+{
+    openLogs();
+
+    Hash_Table * table = tableCtor(table_size);
+
+    size_t number_of_words = 0;
+    char * file_buf = get_file_buffer(processed_file_name, max_str_length, &number_of_words);
 
     const char * words = file_buf + 2*sizeof(size_t);
     const char * word = 0;
@@ -227,10 +319,48 @@ int drawAnalysis(const char * analysis_file)
     return 0;
 }
 
-int getWord(Hash_Table * table, const char * string, int (*hash_func)(const char *))
+char * getRandomWord(const char * processed_file_name, size_t max_str_length)
 {
+    size_t number_of_words = 0;
+    char * file_buf = get_file_buffer(processed_file_name, max_str_length, &number_of_words);
 
+    ASSERT(number_of_words);
+    srand ( time(NULL) );
+    size_t random_index = rand()%number_of_words;
+
+    char * word = strdup(file_buf + 2*sizeof(size_t) + random_index*max_str_length);
+    
+    // printf("%d\n", random_index);
+    // puts(word);
+
+    free(file_buf);
+
+    return word;
+}
+
+int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_length)
+{
+    size_t number_of_tests = 0;
+    char * file_buf = get_file_buffer(tests_file, max_str_length, &number_of_tests);
+
+    // printf("%d\n", number_of_tests);
+    for(size_t idx = 0; idx < number_of_tests; idx++)
+    {
+        size_t word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
+        
+        //getWord
+        
+        // printf("%d\n", word_index);
+        // puts(file_buf + 2*sizeof(size_t) + word_index*max_str_length);
+    }
+
+    free(file_buf);
     return 0;
 }
+
+// int getWord(Hash_Table * table, const char * string)
+// {
+//     return 0;
+// }
 
 #undef PRINT_LOG

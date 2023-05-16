@@ -130,6 +130,7 @@ __uint32_t hash_ascii_sum(const char * string)
 Заселённость хэш-таблицы с Ascii sum-хэш:
 
 <details>
+
 ![Ascii_sum](analysis/Ascii_sum-results.png)
 </details>
 
@@ -160,6 +161,7 @@ __uint32_t hash_rotate_right(const char *string)
 Заселённость хэш-таблицы с ROR-хэш:
 
 <details>
+
 ![Rotate_right](analysis/Rotate_right-results.png)
 </details>
 
@@ -189,6 +191,7 @@ __uint32_t hash_rotate_left(const char *string)
 Заселённость хэш-таблицы с ROR-хэш:
 
 <details>
+
 ![Rotate_left](analysis/Rotate_left-results.png)
 </details>
 
@@ -211,6 +214,7 @@ __uint32_t hash_gnu(const char *string)
 Заселённость хэш-таблицы с GNU хэш:
 
 <details>
+
 ![GNU](analysis/GNU-results.png)
 </details>
 
@@ -218,14 +222,14 @@ __uint32_t hash_gnu(const char *string)
 
 ![Dispersion](analysis/Dispersion-results_all.png)
 
-Для худшей хэш-функции `const_hash`, дисперсия составила $\sigma = \sqrt{WORDS_{NUMBER}}$.
+Для худшей хэш-функции `const_hash`, дисперсия составила $\sigma \approx \sqrt{WORDS_{NUMBER}}$.
 
-Функции `strlen_hash` и `first_letter_hash` оказались не сильно лучше прежде всего из-за их ограниченности. `strlen_hash` принимает значения от `1` до `16`, а вторая всего `66` значений, соответствующие ASCII-кодам маленьких и больших букв английского алфавита.
+Функции `strlen_hash` и `first_letter_hash` оказались не сильно лучше прежде всего из-за их ограниченности. `Strlen_hash` принимает значения от `1` до `16`, а `first_letter_hash` всего `66` значений, соответствующих ASCII-кодам маленьких и больших букв английского алфавита.
 
 Построим новую гистограмму отдельно для 4 других функций:
 ![Dispersion](analysis/Dispersion-results_last.png)
 
-Т.к. дисперсии последних четырёх функций довольно хорошие, то следует сравнить графики заселённостей. Функция с более равномерным распределением заселённости значительно ускорит работу хэш-таблицы.
+Т.к. дисперсии последних четырёх функций довольно хорошие, то следует сравнить графики заселённостей. Чем равномернее распределена заселённость, тем меньше будет время среднее выполнения одной операции с хэш-таблицей.
 
 ![best_hash_funcs](analysis/best_hash_funcs.png)
 
@@ -239,7 +243,9 @@ __uint32_t hash_gnu(const char *string)
 
 ### Вывод
 
-Наилучшими хэш-функциями по распределению заселённости и дисперсии оказались функции `GNU_hash` и `Rotate_right`, поэтому 
+Наилучшими хэш-функциями по распределению заселённости и дисперсии оказались функции `GNU_hash` и `Rotate_right`. 
+
+В дальнейшем используем функцию `GNU_hash` как более компактную в ассемблерной нотации.
 
 ## Часть 2. Оптимизация поиска по хэш-таблице
 
