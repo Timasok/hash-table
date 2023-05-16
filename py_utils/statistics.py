@@ -6,6 +6,10 @@ value = 'Dispersion'
 
 df = pd.read_csv("./data_files/hash_funcs_cmp.csv")
 funcs = df[caption]
+
+funcs = [i.replace(' ', '\n') for i in funcs]
+# print(funcs)
+
 disp = df[value]
 
 # print('Hash funcs:', funcs)

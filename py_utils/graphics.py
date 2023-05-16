@@ -32,8 +32,8 @@ plt.ylabel('Collisions')
 
 plt.title(hash_name)
 
-# plt.show()
-plt.savefig(result_name)
+plt.show()
+# plt.savefig(result_name)
 
 with open('./data_files/hash_funcs_cmp.csv', 'a', newline='') as file:
     writer = csv.writer(file)

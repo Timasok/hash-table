@@ -73,6 +73,11 @@ inline int stopTimer(Timer ** timer)
 
 }
 
+#define CMP_HASH_FUNCS 1
+#define OPTIMIZE_FIND 2
+
+#define H_TAB_MODE CMP_HASH_FUNCS
+
 #define MEASURE_TIME(time_diff, oper, code)                               \
         Timer * timer = (Timer *)calloc(1, sizeof(Timer));          \
         launchTimer(&timer);                                        \
@@ -80,45 +85,51 @@ inline int stopTimer(Timer ** timer)
         stopTimer(&timer);                                          \
         time_diff oper timer->stop_time - timer->st_time;        \
         free(timer);                                                \
+    // __uint64_t time_diff = 0;
+    // MEASURE_TIME(time_diff, =, printf("\n\n\n\n\n\n\n"));
+    // printf("time = %lu\n", time_diff);
 
 int main(int argc, const char ** argv)
 {
     // if(isNewer(mode_specifics, PROCESSED_DATA)); 
         // processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
 
-    __uint64_t time_diff = 0;
-    MEASURE_TIME(time_diff, =, printf("\n\n\n\n\n\n\n"));
-    printf("time = %lu\n", time_diff);
+    int TAB_SIZE = 1021;
+    int STR_LENGTH = 16;
 
+    if(argc>=2 && *(argv[1]))
+    {
+        TAB_SIZE = atoi(argv[1]); 
+        if(argc >= 2)
+            STR_LENGTH = atoi(argv[2]);
+    }
 
-    // int TAB_SIZE = 5281;
-    // int STR_LENGTH = 16;
+#if H_TAB_MODE == OPTIMIZE_FIND
 
-    // if(argc>=2 && *(argv[1]))
-    // {
-    //     TAB_SIZE = atoi(argv[1]); 
-    //     if(argc >= 2)
-    //         STR_LENGTH = atoi(argv[2]);
-    // }
-    
-    // HF_info  hash_funcs_arr[NUMBER_OF_HASH_FUNCS] = {};
-    // fillHashFuncsArray(hash_funcs_arr, TAB_SIZE);
-    // refreshStatFile();
+#elif H_TAB_MODE == CMP_HASH_FUNCS
 
-    // for (int idx = 2; idx < NUMBER_OF_HASH_FUNCS; idx++)
-    // {
-    //     Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_funcs_arr[idx].func_ptr, STR_LENGTH);
-    //     printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
-    //     tableDtor(&tab);
+    HF_info  hash_funcs_arr[NUMBER_OF_HASH_FUNCS] = {};
+    fillHashFuncsArray(hash_funcs_arr, TAB_SIZE);
+    refreshStatFile();
 
-    //     drawHistogram(python_graphics, hash_funcs_arr[idx].func_name, hash_funcs_arr[idx].plot_x_limit);
+    for (int idx = 3; idx < NUMBER_OF_HASH_FUNCS; idx++)
+    {
+        Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_funcs_arr[idx].func_ptr, STR_LENGTH);
+        // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
+        tableDtor(&tab);
+        drawHistogram(python_graphics, hash_funcs_arr[idx].func_name, hash_funcs_arr[idx].plot_x_limit);
 
-    // }
-    // drawAnalysis(python_stats);
-    
-    // destroyHashFuncsArray(hash_funcs_arr);
+    }
+
+    drawAnalysis(python_stats);
+    destroyHashFuncsArray(hash_funcs_arr);
+#endif
+
 }
 
+#undef MEASURE_TIME
+#undef CMP_HASH_FUNCS
+#undef OPTIMIZE_FIND
 
 // ".intel_syntax noprefix\n\t"
 // ".att_syntax"

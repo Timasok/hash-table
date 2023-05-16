@@ -15,6 +15,9 @@ const char * TEXT_DATA_PATH  = "data_files/LOTR.txt";
 const char * PROCESSED_DATA  = "data_files/LOTR";
 #endif
 
+#undef ALBUM
+#undef BOOK
+
 const int MAX_STRING_LENGTH = 16;
 
 #endif

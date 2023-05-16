@@ -60,6 +60,40 @@ $a = \frac{WORDS_{NUMBER}}{TAB_{SIZE}} ->  TAB_{SIZE} = \frac{WORDS_{NUMBER}}{a}
 то $i_1 = i_2$
 , что означает коллизию.
 
+1. ### Const хэш
+
+Функция всегда возвращает 2.
+
+```C++
+__uint32_t hash_const(const char * string)
+{
+    return 2;
+}
+```
+Заселённость хэш-таблицы с const хэш:
+<details>
+
+![Const](analysis/Const-results.png)
+</details>
+
+
+2. ### Strlen хэш
+
+Функция возвращает длину строки.
+
+```C++
+__uint32_t hash_strlen(const char * string)
+{
+    // ASSERT_ASS(string);
+    return (__uint32_t)strlen(string);
+}
+```
+Заселённость хэш-таблицы с strlen хэш:
+<details>
+
+![Strlen](analysis/Strlen-results.png)
+</details>
+
 3. ### Хэш-первая буква
 
 Функция возвращает первый байт строки.
@@ -70,10 +104,11 @@ __uint32_t hash_first_letter(const char * string)
     return (__uint32_t)string[0];
 }
 ```
-
 Заселённость хэш-таблицы с const-хэш:
+<details>
 
 ![First_letter](analysis/First_letter-results.png)
+</details>
 
 4. ### Хэш-сумма
 
@@ -94,7 +129,9 @@ __uint32_t hash_ascii_sum(const char * string)
 
 Заселённость хэш-таблицы с Ascii sum-хэш:
 
+<details>
 ![Ascii_sum](analysis/Ascii_sum-results.png)
+</details>
 
 5. ### ROR-хэш
 
@@ -122,7 +159,9 @@ __uint32_t hash_rotate_right(const char *string)
 
 Заселённость хэш-таблицы с ROR-хэш:
 
+<details>
 ![Rotate_right](analysis/Rotate_right-results.png)
+</details>
 
 6. ### ROL-хэш
 
@@ -149,7 +188,9 @@ __uint32_t hash_rotate_left(const char *string)
 
 Заселённость хэш-таблицы с ROR-хэш:
 
+<details>
 ![Rotate_left](analysis/Rotate_left-results.png)
+</details>
 
 7. ### GNU-хэш
 
@@ -169,15 +210,36 @@ __uint32_t hash_gnu(const char *string)
 
 Заселённость хэш-таблицы с GNU хэш:
 
+<details>
 ![GNU](analysis/GNU-results.png)
+</details>
 
 ### Сравнение дисперсии хэш-функций
 
-![Dispersion](analysis/Dispersion-results.png)
+![Dispersion](analysis/Dispersion-results_all.png)
+
+Для худшей хэш-функции `const_hash`, дисперсия составила $\sigma = \sqrt{WORDS_{NUMBER}}$.
+
+Функции `strlen_hash` и `first_letter_hash` оказались не сильно лучше прежде всего из-за их ограниченности. `strlen_hash` принимает значения от `1` до `16`, а вторая всего `66` значений, соответствующие ASCII-кодам маленьких и больших букв английского алфавита.
+
+Построим новую гистограмму отдельно для 4 других функций:
+![Dispersion](analysis/Dispersion-results_last.png)
+
+Т.к. дисперсии последних четырёх функций довольно хорошие, то следует сравнить графики заселённостей. Функция с более равномерным распределением заселённости значительно ускорит работу хэш-таблицы.
+
+![best_hash_funcs](analysis/best_hash_funcs.png)
+
+<!-- 
+|**Hash func**|**$\sigma$**|
+| :--------: |:---:|
+| Ascii sum  |13.17|
+|Rotate right| 9.67|
+| Rotate left| 4.54|
+|     GNU    | 4.04| -->
 
 ### Вывод
 
-
+Наилучшими хэш-функциями по распределению заселённости и дисперсии оказались функции `GNU_hash` и `Rotate_right`, поэтому 
 
 ## Часть 2. Оптимизация поиска по хэш-таблице
 
