@@ -210,11 +210,13 @@ char * get_file_buffer(const char * processed_file_name, size_t max_str_length, 
     return file_buf;
 }
 
+//TODO fix a little bit usage of hash_func_ptr
 Hash_Table * formTable(const char * processed_file_name, size_t table_size, __uint32_t (*hash_func)(const char *), size_t max_str_length)
 {
     openLogs();
 
     Hash_Table * table = tableCtor(table_size);
+    table->hash_func = hash_func;
 
     size_t number_of_words = 0;
     char * file_buf = get_file_buffer(processed_file_name, max_str_length, &number_of_words);
@@ -233,7 +235,7 @@ Hash_Table * formTable(const char * processed_file_name, size_t table_size, __ui
 
         if(cur_list->elements[0].next == -1)
         {
-            cur_list->elements[1] = {.value = word, .next = 0, .prev = 0};
+            cur_list->elements[1] = {.value = strdup(word), .next = 0, .prev = 0};
             cur_list->elements[0] = {.value = "#", .next = 1, .prev = 1};
             getNextFree(cur_list);             
             
@@ -242,7 +244,7 @@ Hash_Table * formTable(const char * processed_file_name, size_t table_size, __ui
 
         } else if(!existsInList(cur_list, word))
         {
-            LIST_ADD_BEFORE(&table->list[list_idx], word, 0);
+            LIST_ADD_BEFORE(&table->list[list_idx], strdup(word), 0);
             
             cur_list->size++;
             table->number_of_words++;
@@ -337,30 +339,5 @@ char * getRandomWord(const char * processed_file_name, size_t max_str_length)
 
     return word;
 }
-
-int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_length)
-{
-    size_t number_of_tests = 0;
-    char * file_buf = get_file_buffer(tests_file, max_str_length, &number_of_tests);
-
-    // printf("%d\n", number_of_tests);
-    for(size_t idx = 0; idx < number_of_tests; idx++)
-    {
-        size_t word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
-        
-        //getWord
-        
-        // printf("%d\n", word_index);
-        // puts(file_buf + 2*sizeof(size_t) + word_index*max_str_length);
-    }
-
-    free(file_buf);
-    return 0;
-}
-
-// int getWord(Hash_Table * table, const char * string)
-// {
-//     return 0;
-// }
 
 #undef PRINT_LOG

@@ -5,11 +5,53 @@
 #include "hash_funcs.h"
 #include "htab_funcs.h"
 #include "mode_specifics.h"
-// #include "time_measure.h"
 
-const char * mode_specs_file = "./config/mode_specifics.h";
+#define CMP_HASH_FUNCS 1
+#define OPTIMIZE_FIND 2
+
+#define H_TAB_MODE OPTIMIZE_FIND
+// #define H_TAB_MODE CMP_HASH_FUNCS
+
+#if defined PROCESS_DATA
+    const char * mode_specs_file = "./config/mode_specifics.h";
+    if(isNewer(mode_specifics, PROCESSED_DATA)); 
+        processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
+#endif
+
+#if H_TAB_MODE == OPTIMIZE_FIND
+
+#include "find_experiment.h"
+
 const char * alternative_words_source = "./data_files/Hamlet.txt";
 const char * find_tests_data = "./data_files/find_tests.txt";
+
+int main(int argc, const char ** argv)
+{
+    int TAB_SIZE = 1021;
+    int STR_LENGTH = 16;
+    int NUMBER_OF_TESTS = 1000;
+
+    if(argc>=2 && *(argv[1]))
+    {
+        TAB_SIZE = atoi(argv[1]); 
+        if(argc >= 2)
+        {
+            STR_LENGTH = atoi(argv[2]);
+            if(argc >= 3)
+                NUMBER_OF_TESTS = atoi(argv[3]);
+        }
+    }
+
+    // prepareFindTests(PROCESSED_DATA, find_tests_data, alternative_words_source, STR_LENGTH, NUMBER_OF_TESTS);
+
+    Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
+    makeExperiment(tab, find_tests_data, STR_LENGTH);
+    tableDtor(&tab);
+
+}
+
+#elif H_TAB_MODE == CMP_HASH_FUNCS
+
 const char * python_graphics = "./py_utils/graphics.py";
 const char * python_stats = "./py_utils/statistics.py";
 
@@ -40,91 +82,10 @@ static void destroyHashFuncsArray(HF_info * hash_funcs_arr)
         free(hash_funcs_arr[i].func_name);
 };
 
-struct Timer
-{
-    __uint64_t st_time;
-    __uint64_t stop_time;
-};
 
-inline int launchTimer(Timer ** timer) __attribute__((always_inline));
-inline int stopTimer(Timer ** timer) __attribute__((always_inline));
-
-inline int launchTimer(Timer ** timer)
-{
-    asm volatile (   
-        "rdtsc\n\t"
-        "shl \t$32, %%rdx\n\t"
-        "or \t%%rdx, %0\n\t"
-        : "=a" ((*timer)->st_time)
-        :
-        : "rdx");
-
-    return 0;
-}   
-inline int stopTimer(Timer ** timer)
-{       
-    asm volatile (   
-        "rdtsc\n\t"
-        "shl \t$32, %%rdx\n\t"
-        "or \t%%rdx, %0\n\t"
-        : "=a" ((*timer)->stop_time)
-        :
-        : "rdx");
-
-    return 0;
-
-}
-
-#define CMP_HASH_FUNCS 1
-#define OPTIMIZE_FIND 2
-
-#define H_TAB_MODE OPTIMIZE_FIND
-// #define H_TAB_MODE CMP_HASH_FUNCS
-
-#define MEASURE_TIME(time_diff, oper, code)                               \
-        Timer * timer = (Timer *)calloc(1, sizeof(Timer));          \
-        launchTimer(&timer);                                        \
-        code;                                                       \
-        stopTimer(&timer);                                          \
-        time_diff oper timer->stop_time - timer->st_time;        \
-        free(timer);                                                \
-    // __uint64_t time_diff = 0;
-    // MEASURE_TIME(time_diff, =, printf("\n\n\n\n\n\n\n"));
-    // printf("time = %lu\n", time_diff);
 
 int main(int argc, const char ** argv)
 {
-
-#if defined PROCESS_DATA
-    if(isNewer(mode_specifics, PROCESSED_DATA)); 
-        processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
-#endif
-
-#if H_TAB_MODE == OPTIMIZE_FIND
-
-    int TAB_SIZE = 1021;
-    int STR_LENGTH = 16;
-    int NUMBER_OF_TESTS = 500;
-
-    if(argc>=2 && *(argv[1]))
-    {
-        TAB_SIZE = atoi(argv[1]); 
-        if(argc >= 2)
-        {
-            STR_LENGTH = atoi(argv[2]);
-            if(argc >= 3)
-                NUMBER_OF_TESTS = atoi(argv[3]);
-        }
-    }
-
-    // prepareFindTests(PROCESSED_DATA, find_tests_data, alternative_words_source, STR_LENGTH, NUMBER_OF_TESTS);
-
-    Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
-    makeExperiment(tab, find_tests_data, STR_LENGTH);
-    tableDtor(&tab);
-
-#elif H_TAB_MODE == CMP_HASH_FUNCS
-
     int TAB_SIZE = 1021;
     int STR_LENGTH = 16;
 
@@ -150,9 +111,9 @@ int main(int argc, const char ** argv)
 
     drawAnalysis(python_stats);
     destroyHashFuncsArray(hash_funcs_arr);
-#endif
 
 }
+#endif
 
 #undef MEASURE_TIME
 #undef CMP_HASH_FUNCS
