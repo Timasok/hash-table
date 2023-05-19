@@ -12,7 +12,8 @@ OBJ_DIR = ./obj/
 I_FLAG := -I./lib/stack/include/ -I./lib/list/include/ -I./lib/ -I./ -I./include/ -I./config
 
 CC := g++
-CFLAGS := -Wno-format -g -fsanitize=address
+O_FLAGS := -O1
+CFLAGS  := -Wno-format -Wno-write-strings -g -fsanitize=address
 CFLAGS_NO_SANITIZER := -Wno-format -g
 
 H_TAB_EXE   := hash_table
@@ -53,4 +54,4 @@ mkdir :
 	@mkdir -p analysis
 
 clean :
-	@rm $(H_TAB_EXE) $(OBJ_DIR)*.o 
+	@rm $(H_TAB_EXE) $(OBJ_DIR)*.o

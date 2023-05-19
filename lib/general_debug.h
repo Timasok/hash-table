@@ -58,8 +58,11 @@
             break;                                                      \
         }                                                               \
 
-#define HIGHLIGHT_NUMBER(message, number)                                             \
-            printf("\e[0;32m%s = %lu\e[0m\n", (message) ? message : " ", number);     \
+#define HIGHLIGHT_LONG(number)                                      \
+            printf("\e[0;32m%s = %lu\e[0m\n", #number, number);     \
+
+#define HIGHLIGHT_DOUBLE(number)                                    \
+            printf("\e[0;32m%s = %lf\e[0m\n", #number, number);     \
 
 #define MAX(a, b)          \
     (a > b) ? a : b        \

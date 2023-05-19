@@ -4,6 +4,8 @@
 #include "general_debug.h"
 #include "hash_funcs.h"
 
+#include "htab_config.h"
+
 __uint32_t hash_1(const char * string)
 {
     return 1;
@@ -72,7 +74,11 @@ __uint32_t hash_rotate_left(const char *string)
 
 __uint32_t hash_gnu(const char *string)
 {
+#if H_TAB_MODE == OPTIMIZE_FIND
+    __uint32_t hash = 6287;
+#elif H_TAB_MODE == CMP_HASH_FUNCS
     __uint32_t hash = 1021;
+#endif
 
     int idx = 0;
 

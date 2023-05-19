@@ -34,3 +34,5 @@
 
 logs/**
 graph_dumps/**
+
+*callgrind.out

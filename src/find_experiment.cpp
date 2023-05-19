@@ -58,7 +58,7 @@ int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_l
 
     // printf("%d\n", number_of_tests);
 
-    __uint64_t average_time = 0;
+    double average_time = 0;
     __uint64_t time_interval = 0;
     size_t word_index = 0;
 
@@ -67,26 +67,17 @@ int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_l
 
     for(size_t idx = 0; idx < number_of_tests; idx++)
     {
-        HIGHLIGHT_NUMBER("idx", idx);
         word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
         strncpy(word, words + word_index*max_str_length, max_str_length);
 
-        // MEASURE_TIME(time_interval, , getWord(table, word));
-        // average_time += time_interval/number_of_tests;
+        MEASURE_TIME(time_interval, , getWord(table, word));
+        average_time += (double)time_interval/(double)number_of_tests;
 
-        Timer * timer = (Timer *)calloc(1, sizeof(Timer)); 
-        launchTimer(&timer);
-        getWord(table, word);
-        stopTimer(&timer);
-        time_interval = timer->stop_time - timer->st_time;
-        printf("%d\n", time_interval);
-        average_time += (time_interval)/table->size;
-        free(timer);     
-        
-        // puts(file_buf + 2*sizeof(size_t) + word_index*max_str_length);
     }
 
-    // printf("%d\n", average_time);
+    // HIGHLIGHT_DOUBLE(average_time);
+    HIGHLIGHT_LONG((u_long)average_time);
+    saveResult(average_time);
 
     free(word);
     free(file_buf);
@@ -100,11 +91,34 @@ int getWord(Hash_Table * table, const char * string)
     __uint32_t index = table->hash_func(string);
 
     index%=table->size;
-    printf("%d\n", index);
+    // printf("%d\n", index);
 
-    // HIGHLIGHT_NUMBER("index", index);
+    // HIGHLIGHT_LONG("index", index);
     findInList(&(table->list[index]), string);
 
     return 0;
 
+}
+
+const char * TIME_DATA_FILE = "./data_files/TIME.csv";
+const char * PYTHON_FOR_TIME_ANALYSIS = "./py_utils/time_data.csv";
+
+int saveResult(__uint64_t average_time)
+{
+    FILE * CSV_file = fopen(TIME_DATA_FILE, "a+");
+    
+    fprintf(CSV_file, ",%lu", average_time);
+
+    fclose(CSV_file);
+
+    return 0;
+}
+
+int displayResult()
+{
+    char command[128] = {};
+    sprintf(command, "python3 %s", PYTHON_FOR_TIME_ANALYSIS);
+
+    system(command);
+    return 0;
 }

@@ -4,19 +4,14 @@
 #include "text_funcs.h"
 #include "hash_funcs.h"
 #include "htab_funcs.h"
+
 #include "mode_specifics.h"
+#include "htab_config.h"
 
-#define CMP_HASH_FUNCS 1
-#define OPTIMIZE_FIND 2
-
-#define H_TAB_MODE OPTIMIZE_FIND
-// #define H_TAB_MODE CMP_HASH_FUNCS
-
-#if defined PROCESS_DATA
-    const char * mode_specs_file = "./config/mode_specifics.h";
-    if(isNewer(mode_specifics, PROCESSED_DATA)); 
-        processData(TEXT_DATA_PATH, PROCESSED_DATA, MAX_STRING_LENGTH);
-#endif
+#define PROCESS_DATA                                                \
+    const char * mode_specs_file = "./config/mode_specifics.h";     \
+    processData(TEXT_DATA_PATH, PROCESSED_DATA, STR_LENGTH);        \
+    // if(isNewer(mode_specs_file, PROCESSED_DATA));                \
 
 #if H_TAB_MODE == OPTIMIZE_FIND
 
@@ -27,8 +22,8 @@ const char * find_tests_data = "./data_files/find_tests.txt";
 
 int main(int argc, const char ** argv)
 {
-    int TAB_SIZE = 1021;
-    int STR_LENGTH = 16;
+    int TAB_SIZE = 6287;
+    int STR_LENGTH = 8;
     int NUMBER_OF_TESTS = 1000;
 
     if(argc>=2 && *(argv[1]))
@@ -42,9 +37,11 @@ int main(int argc, const char ** argv)
         }
     }
 
+    // PROCESS_DATA;
     // prepareFindTests(PROCESSED_DATA, find_tests_data, alternative_words_source, STR_LENGTH, NUMBER_OF_TESTS);
 
     Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
+    // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
     makeExperiment(tab, find_tests_data, STR_LENGTH);
     tableDtor(&tab);
 
@@ -81,8 +78,6 @@ static void destroyHashFuncsArray(HF_info * hash_funcs_arr)
     for(int i = 0; i < NUMBER_OF_HASH_FUNCS; i++)
         free(hash_funcs_arr[i].func_name);
 };
-
-
 
 int main(int argc, const char ** argv)
 {
