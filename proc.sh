@@ -1,1 +1,0 @@
-python3 ./py_utils/time_data.py

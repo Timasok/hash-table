@@ -45,7 +45,7 @@ int main(int argc, const char ** argv)
     // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
 
     for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
-        makeExperiment(tab, find_tests_data, STR_LENGTH);
+        findInTable(tab, find_tests_data, STR_LENGTH);
 
     displayResult();
 

@@ -22,6 +22,7 @@ std_dev = math.sqrt(sum((x - mean) ** 2 for x in numbers) / len(numbers))
 # Печатаем результаты в консоль
 print('\033[32m' + f'Среднее: {mean:.2f}' + '\033[0m')
 print('\033[32m' + f'Стандартное отклонение: {std_dev:.2f}' + '\033[0m')
+print('\033[32m' + f'Относительная погрешность: {(std_dev*100/mean):.2f}' + ' %' + '\033[0m')
 
 with open('./data_files/TIME.csv', 'w') as file:
     data = []

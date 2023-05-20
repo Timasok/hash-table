@@ -40,14 +40,6 @@ inline int stopTimer(Timer ** timer)
 
 }
 
-#define MEASURE_TIME(time_diff, oper, code)                                 \
-        Timer * timer = (Timer *)calloc(1, sizeof(Timer));                  \
-        launchTimer(&timer);                                                \
-        code;                                                               \
-        stopTimer(&timer);                                                  \
-        time_diff oper (double)(timer->stop_time - timer->st_time);         \
-        free(timer);                                                        \
-
 // #include <time.h>
 // #define MEASURE_TIME(time_diff, oper, code)                                         \
 //         clock_t timer_start = clock();                                              \
@@ -57,7 +49,13 @@ inline int stopTimer(Timer ** timer)
 //         time_diff oper seconds;                                                     \
 //         // printf("%lf seconds\n", seconds);                                        \
 
-int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_length)
+#define MEASURE_TIME(time_diff, oper, code, timerPtr)                       \
+        launchTimer(&timerPtr);                                             \
+        code;                                                               \
+        stopTimer(&timerPtr);                                               \
+        time_diff oper (double)(timer->stop_time - timer->st_time);         \
+
+int findInTable(Hash_Table * table, const char * tests_file, size_t max_str_length)
 {
     size_t number_of_tests = 0;
     char * file_buf = get_file_buffer(tests_file, max_str_length, &number_of_tests);
@@ -70,20 +68,23 @@ int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_l
 
     const char * words = file_buf + 2*sizeof(size_t);
     char * word = (char *)calloc(max_str_length, sizeof(char));
+    Timer * timer = (Timer *)calloc(1, sizeof(Timer));
 
     for(size_t idx = 0; idx < number_of_tests; idx++)
     {
         word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
         strncpy(word, words + word_index*max_str_length, max_str_length);
 
-        MEASURE_TIME(average_time,+=, getWord(table, word));
+        MEASURE_TIME(average_time,+=, getWord(table, word), timer);
 
     }
+    free(timer);      
+
     average_time /=(double)number_of_tests;
 
     // HIGHLIGHT_DOUBLE(average_time);
     saveResult(average_time);
-    
+
     free(word);
     free(file_buf);
     return 0;

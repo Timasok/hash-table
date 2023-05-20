@@ -17,9 +17,8 @@ cd /home/timasok/Pictures/Screenshots/
 # Находим последний созданный файл
 latest_file=$(ls -t | head -1)
 
-mv "$latest_file" $file_name.png
+mv "$latest_file" $file_name
 
 # Копируем его в папку path_2
 cp $file_name $path_2
-
 echo "Файл" "$path_2"$file_name "успешно сохранён!"
