@@ -11,7 +11,7 @@ read -p "./hash_table " args
 valgrind --tool=callgrind ./hash_table $args 2>&1 >./logs/callgrind_logs.txt
 
 # Сохраняем имя скомпилированного отчёта, начинающегося с callgrind.out
-name=$(ls -1 callgrind.out* | tail -n 1) 2>&1 >./logs/kcachegrind_logs.txt
+name=$(ls -1 callgrind.out* | tail -n 1) 
 
 # Запускаем kachegrind с указанным именем отчёта
-kcachegrind $name 2>&1 >nul
+kcachegrind $name 2>&1 >./logs/kcachegrind_logs.txt

@@ -13,6 +13,7 @@ struct Hash_Table
     __uint32_t (*hash_func)(const char *);
 };
 
+int removeDuplicateWords(char *** tokens, size_t * capacity);
 int processData(const char * text_file_name, const char * processed_file_name, size_t max_str_length);
 int prepareFindTests(const char * htab_data_file, const char * tests_file, const char * text_file_name,
                                                         size_t max_str_length, size_t number_of_tests);

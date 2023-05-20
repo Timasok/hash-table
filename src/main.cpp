@@ -10,7 +10,7 @@
 
 #define PROCESS_DATA                                                \
     const char * mode_specs_file = "./config/mode_specifics.h";     \
-    processData(TEXT_DATA_PATH, PROCESSED_DATA, STR_LENGTH);        \
+    // processData(TEXT_DATA_PATH, PROCESSED_DATA, STR_LENGTH);        \
     // if(isNewer(mode_specs_file, PROCESSED_DATA));                \
 
 #if H_TAB_MODE == OPTIMIZE_FIND
@@ -19,12 +19,13 @@
 
 const char * alternative_words_source = "./data_files/Hamlet.txt";
 const char * find_tests_data = "./data_files/find_tests.txt";
+const int WEGHT_OF_FORM_TABLE = 1000;
 
 int main(int argc, const char ** argv)
 {
     int TAB_SIZE = 6287;
     int STR_LENGTH = 8;
-    int NUMBER_OF_TESTS = 1000;
+    int NUMBER_OF_TESTS = 1000; // < 
 
     if(argc>=2 && *(argv[1]))
     {
@@ -42,9 +43,13 @@ int main(int argc, const char ** argv)
 
     Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
     // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
-    makeExperiment(tab, find_tests_data, STR_LENGTH);
-    tableDtor(&tab);
 
+    for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
+        makeExperiment(tab, find_tests_data, STR_LENGTH);
+
+    displayResult();
+
+    tableDtor(&tab);
 }
 
 #elif H_TAB_MODE == CMP_HASH_FUNCS

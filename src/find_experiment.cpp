@@ -40,16 +40,22 @@ inline int stopTimer(Timer ** timer)
 
 }
 
-#define MEASURE_TIME(time_diff, oper, code)                         \
-        Timer * timer = (Timer *)calloc(1, sizeof(Timer));          \
-        launchTimer(&timer);                                        \
-        code;                                                       \
-        stopTimer(&timer);                                          \
-        time_diff oper= timer->stop_time - timer->st_time;           \
-        free(timer);                                                \
-    // __uint64_t time_diff = 0;
-    // MEASURE_TIME(time_diff, =, printf("\n\n\n\n\n\n\n"));
-    // printf("time = %lu\n", time_diff);
+#define MEASURE_TIME(time_diff, oper, code)                                 \
+        Timer * timer = (Timer *)calloc(1, sizeof(Timer));                  \
+        launchTimer(&timer);                                                \
+        code;                                                               \
+        stopTimer(&timer);                                                  \
+        time_diff oper (double)(timer->stop_time - timer->st_time);         \
+        free(timer);                                                        \
+
+// #include <time.h>
+// #define MEASURE_TIME(time_diff, oper, code)                                         \
+//         clock_t timer_start = clock();                                              \
+//         code;                                                                       \
+//             clock_t timer_end = clock();                                            \
+//         double seconds = ((double)(timer_end - timer_start)) / CLOCKS_PER_SEC;      \
+//         time_diff oper seconds;                                                     \
+//         // printf("%lf seconds\n", seconds);                                        \
 
 int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_length)
 {
@@ -70,15 +76,14 @@ int makeExperiment(Hash_Table * table, const char * tests_file, size_t max_str_l
         word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
         strncpy(word, words + word_index*max_str_length, max_str_length);
 
-        MEASURE_TIME(time_interval, , getWord(table, word));
-        average_time += (double)time_interval/(double)number_of_tests;
+        MEASURE_TIME(average_time,+=, getWord(table, word));
 
     }
+    average_time /=(double)number_of_tests;
 
     // HIGHLIGHT_DOUBLE(average_time);
-    HIGHLIGHT_LONG((u_long)average_time);
     saveResult(average_time);
-
+    
     free(word);
     free(file_buf);
     return 0;
@@ -92,22 +97,28 @@ int getWord(Hash_Table * table, const char * string)
 
     index%=table->size;
     // printf("%d\n", index);
-
     // HIGHLIGHT_LONG("index", index);
-    findInList(&(table->list[index]), string);
+    
+    int result_index = findInList(&(table->list[index]), string);
+    volatile int word_index = result_index;
 
     return 0;
 
 }
 
 const char * TIME_DATA_FILE = "./data_files/TIME.csv";
-const char * PYTHON_FOR_TIME_ANALYSIS = "./py_utils/time_data.csv";
+const char * PYTHON_FOR_TIME_ANALYSIS = "./py_utils/time_data.py";
 
 int saveResult(__uint64_t average_time)
 {
-    FILE * CSV_file = fopen(TIME_DATA_FILE, "a+");
+    FILE * CSV_file = fopen(TIME_DATA_FILE, "a");
     
-    fprintf(CSV_file, ",%lu", average_time);
+    // HIGHLIGHT_LONG(ftell(CSV_file));
+
+    if(ftell(CSV_file) > SEEK_SET)
+        fputs(",", CSV_file);
+
+    fprintf(CSV_file, "%lu", average_time);
 
     fclose(CSV_file);
 

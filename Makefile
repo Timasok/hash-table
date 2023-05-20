@@ -11,10 +11,10 @@ OBJ_DIR = ./obj/
 
 I_FLAG := -I./lib/stack/include/ -I./lib/list/include/ -I./lib/ -I./ -I./include/ -I./config
 
-CC := g++
-O_FLAGS := -O1
-CFLAGS  := -Wno-format -Wno-write-strings -g -fsanitize=address
-CFLAGS_NO_SANITIZER := -Wno-format -g
+CC := gcc
+O_FLAGS := -O3
+CFLAGS  := -Wno-format -Wno-write-strings -Wno-unused-result #-g -fsanitize=address 
+CFLAGS_NO_SANITIZER := -Wno-format -Wno-write-strings -Wno-unused-result -g
 
 H_TAB_EXE   := hash_table
 
@@ -36,16 +36,16 @@ $(H_TAB_EXE) : $(ALL_OBJ)
 	@$(CC) $(CFLAGS) $(ALL_OBJ) -o $(H_TAB_EXE)
 
 $(OBJ_DIR)%.o : $(HASH_DIR)%.cpp
-	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) $(O_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o : $(LIST_DIR)%.cpp
-	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) $(O_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o : $(STK_DIR)%.cpp
-	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) $(O_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o : $(LIB_DIR)%.cpp
-	@$(CC) $(I_FLAG) $(CFLAGS) -c $< -o $@
+	@$(CC) $(I_FLAG) $(CFLAGS) $(O_FLAGS) -c $< -o $@
 
 mkdir :
 	@mkdir -p $(GRAPH_DUMP_DIR)

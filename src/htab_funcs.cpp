@@ -28,6 +28,41 @@ static int closeTextLogs()
     return 0;
 }
 
+int removeDuplicateWords(char *** tokens, size_t * capacity)
+{
+    char ** new_tokens = (char **)calloc((*capacity), sizeof(char*));
+
+    int old_idx = 0;
+    int new_idx = 0;
+    bool duplicate = false;
+
+    for (; old_idx < *capacity; old_idx++)
+    {
+        for(int cnt = 0; cnt < new_idx; cnt++)
+            if(strcmp(new_tokens[cnt], (*tokens)[old_idx]) == 0)
+            {
+                duplicate = true;
+                break;
+            }   
+
+        if(!duplicate)
+        {    
+            new_tokens[new_idx] = (*tokens)[old_idx];
+            new_idx++;
+        } else
+        {
+            duplicate = false;
+        }
+    }
+
+    free(*tokens);
+
+    *capacity = new_idx; 
+    *tokens = (char **)realloc(new_tokens, (*capacity)*sizeof(char*));
+
+    return 0;
+}
+
 int processData(const char * text_file_name, const char * processed_file_name, size_t max_str_length)
 {
     openTextLogs();
@@ -75,6 +110,7 @@ int processData(const char * text_file_name, const char * processed_file_name, s
 
     capacity = idx;
     tokens = (char **)realloc(tokens, (capacity)*sizeof(char*));
+    removeDuplicateWords(&tokens, &capacity);
 
     PRINT_LOG("tokens of %s : \n", text_file_name);
     PRINT_LOG("max_length = %lu\n", max_str_length);
