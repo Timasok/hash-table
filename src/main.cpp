@@ -19,7 +19,7 @@
 
 const char * alternative_words_source = "./data_files/Hamlet.txt";
 const char * find_tests_data = "./data_files/find_tests.txt";
-const int WEGHT_OF_FORM_TABLE = 1000;
+const int WEGHT_OF_FORM_TABLE = 1000; //TODO rename
 
 int main(int argc, const char ** argv)
 {
@@ -41,15 +41,15 @@ int main(int argc, const char ** argv)
     // PROCESS_DATA;
     // prepareFindTests(PROCESSED_DATA, find_tests_data, alternative_words_source, STR_LENGTH, NUMBER_OF_TESTS);
 
-    Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
-    // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
+//     Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
+//     // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
 
-    for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
-        findInTable(tab, find_tests_data, STR_LENGTH);
+//     for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
 
-    displayResult();
+//     displayResult();
+//     tableDtor(&tab);
 
-    tableDtor(&tab);
+    printf("%2X\n", hash_gnu("Bitch"));
 }
 
 #elif H_TAB_MODE == CMP_HASH_FUNCS

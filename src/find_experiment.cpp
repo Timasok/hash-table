@@ -67,25 +67,36 @@ int findInTable(Hash_Table * table, const char * tests_file, size_t max_str_leng
     size_t word_index = 0;
 
     const char * words = file_buf + 2*sizeof(size_t);
+
+#ifdef NO_OPT
     char * word = (char *)calloc(max_str_length, sizeof(char));
+#elif defined OPT_ALIGNMENT
+#endif
+
     Timer * timer = (Timer *)calloc(1, sizeof(Timer));
 
     for(size_t idx = 0; idx < number_of_tests; idx++)
     {
         word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
+#ifdef NO_OPT
         strncpy(word, words + word_index*max_str_length, max_str_length);
-
         MEASURE_TIME(average_time,+=, getWord(table, word), timer);
+#elif defined OPT_ALIGNMENT
+        MEASURE_TIME(average_time,+=, getWord(table, words + word_index*max_str_length), timer);
+#endif
 
     }
-    free(timer);      
-
+    free(timer);
     average_time /=(double)number_of_tests;
-
     // HIGHLIGHT_DOUBLE(average_time);
+
     saveResult(average_time);
 
+#ifdef NO_OPT
     free(word);
+#elif defined OPT_ALIGNMENT
+#endif
+
     free(file_buf);
     return 0;
 }
@@ -96,7 +107,7 @@ int getWord(Hash_Table * table, const char * string)
 
     __uint32_t index = table->hash_func(string);
 
-    index%=table->size;
+    index %= table->size;
     // printf("%d\n", index);
     // HIGHLIGHT_LONG("index", index);
     

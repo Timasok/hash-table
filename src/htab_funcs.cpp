@@ -238,7 +238,6 @@ char * get_file_buffer(const char * processed_file_name, size_t max_str_length, 
     size_t file_length = (*number_of_words)*file_str_length + 2*sizeof(size_t);
 
     char * file_buf = (char *)calloc(file_length, sizeof(char));
-
     fread(file_buf, sizeof(char), file_length, data_file);
     
     fclose(data_file);

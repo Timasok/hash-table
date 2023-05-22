@@ -3,6 +3,7 @@
 
 #include "list.h"
 #include "list_debug.h"
+#include "optimizations.h"
 
 struct Hash_Table
 {
