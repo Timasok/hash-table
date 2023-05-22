@@ -15,6 +15,10 @@
 
 #if H_TAB_MODE == OPTIMIZE_FIND
 
+#ifdef OPT_HASH_ASM
+    extern "C" __uint32_t hash_gnu_asm(const char* string);
+#endif 
+
 #include "find_experiment.h"
 
 const char * alternative_words_source = "./data_files/Hamlet.txt";
@@ -41,15 +45,22 @@ int main(int argc, const char ** argv)
     // PROCESS_DATA;
     // prepareFindTests(PROCESSED_DATA, find_tests_data, alternative_words_source, STR_LENGTH, NUMBER_OF_TESTS);
 
-//     Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
-//     // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
+#ifdef OPT_HASH_ASM
+        Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu_asm, STR_LENGTH);
+        // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
+#else
+        Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
+        // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
+#endif   
+    for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
+        findInTable(tab, find_tests_data, STR_LENGTH);
 
-//     for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
+    displayResult();
+    tableDtor(&tab);
 
-//     displayResult();
-//     tableDtor(&tab);
+    // printf("gnu_hash    (Tree) = %lu\n", hash_gnu("Tree"));
+    // printf("gnu_hash_asm(Tree) = %lu\n", hash_gnu_asm("Tree"));
 
-    printf("%2X\n", hash_gnu("Bitch"));
 }
 
 #elif H_TAB_MODE == CMP_HASH_FUNCS

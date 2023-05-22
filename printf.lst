@@ -1,0 +1,59 @@
+     1                                  ; global _start
+     2                                  
+     3                                  ; _start:     
+     4                                  ;         jmp GNU_hash_asm                ; хэш-функция, по максимуму использующая регистры
+     5                                  
+     6                                  ; section .data
+     7                                  ; Msg:    dq "Bitch", 0x0a
+     8                                  ; section .text
+     9                                  
+    10                                  section .text
+    11                                  
+    12                                  global hash_gnu_asm
+    13                                  
+    14                                  hash_gnu_asm:
+    15                                          ; mov rdi, Msg               ; test shit
+    16                                  
+    17                                          ; push    rbp
+    18                                          ; mov     rbp, rsp              ; Заголовок функции
+    19                                  
+    20 00000000 53                              push rbx
+    21 00000001 4831DB                          xor rbx, rbx                    ; rbx = 0
+    22                                          
+    23 00000004 488B17                          mov rdx, [rdi]                  ; rdx = string
+    24 00000007 B88F180000                      mov rax, 6287                   ; r9 = hash
+    25                                          
+    26 0000000C EB15                            jmp .first_check
+    27                                  
+    28                                  .make_step:
+    29 0000000E 89C3                            mov ebx, eax                    ; ebx = eax(hash)
+    30 00000010 C1E305                          sal ebx, 5                      ; ebx = hash << 5
+    31 00000013 4863DB                          movsx rbx, ebx
+    32 00000016 4801D8                          add rax, rbx                    ; rax = (hash << 5 + hash)
+    33                                          
+    34 00000019 4831DB                          xor rbx, rbx
+    35 0000001C 88D3                            mov bl, dl                      ; rbx = string[idx]
+    36 0000001E 4801D8                          add rax, rbx
+    37                                  
+    38 00000021 EB0C                            jmp .check_loop
+    39                                  
+    40                                  .first_check:
+    41 00000023 80FA00                          cmp dl, 0                       ; if(string[idx] == '\0')
+    42 00000026 7412                            je .end                         ;   break;        
+    43                                          
+    44 00000028 B907000000                      mov rcx, 7                      ; rcx = set counter
+    45 0000002D EBDF                            jmp .make_step
+    46                                  
+    47                                  .check_loop:
+    48 0000002F 48C1FA08                        sar rdx, 8                      ; get next letter in
+    49 00000033 80FA00                          cmp dl, 0                       ; if(string[idx] == '\0')
+    50 00000036 7402                            je .end                         ;   break;
+    51                                  
+    52 00000038 E2D4                            loop .make_step
+    53                                  .end:
+    54 0000003A 4883E0FF                        and rax, 0xffffffff
+    54          ******************       warning: signed dword value exceeds bounds [-w+number-overflow]
+    55 0000003E 5B                              pop rbx
+    56                                          ; pop rbp
+    57 0000003F C3                              ret
+    58                                  

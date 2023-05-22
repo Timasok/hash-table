@@ -6,6 +6,9 @@
 
 #include "htab_config.h"
 
+
+
+
 __uint32_t hash_1(const char * string)
 {
     return 1;

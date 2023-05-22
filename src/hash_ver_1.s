@@ -1,8 +1,6 @@
 section .text
 global hash_gnu_asm
 hash_gnu_asm:
-        ; push rbp
-        ; mov rbp, rsp
         push rbx
         xor rbx, rbx                    ; rbx = 0       
         mov rdx, [rdi]                  ; rdx = string
@@ -26,9 +24,8 @@ hash_gnu_asm:
         sar rdx, 8                      ; get next letter in
         cmp dl, 0                       ; if(string[idx] == '\0')
         je .end                         ;   break;
-        dec ecx
+        dec rcx
         jnz .make_step
 .end:
         pop rbx
-        ; pop rbp
         ret
