@@ -23,13 +23,13 @@
 
 const char * alternative_words_source = "./data_files/Hamlet.txt";
 const char * find_tests_data = "./data_files/find_tests.txt";
-const int WEGHT_OF_FORM_TABLE = 1000; //TODO rename
+const int NUMBER_OF_LAUNCHES = 10000;
 
 int main(int argc, const char ** argv)
 {
     int TAB_SIZE = 6287;
     int STR_LENGTH = 8;
-    int NUMBER_OF_TESTS = 1000; // < 
+    int NUMBER_OF_TESTS = 1000;         // <
 
     if(argc>=2 && *(argv[1]))
     {
@@ -48,11 +48,15 @@ int main(int argc, const char ** argv)
 #ifdef OPT_HASH_ASM
         Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu_asm, STR_LENGTH);
         // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
+#elif defined OPT_HASH_CHANGE
+        Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_simdCrc32, STR_LENGTH);
+        // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
 #else
         Hash_Table * tab = formTable(PROCESSED_DATA, TAB_SIZE, hash_gnu, STR_LENGTH);
         // printf("=======wrds=cnt==%lu==========\n", tab->number_of_words);
 #endif   
-    for(int cnt = 0; cnt < WEGHT_OF_FORM_TABLE; cnt++)
+
+    for(int cnt = 0; cnt < NUMBER_OF_LAUNCHES; cnt++)
         findInTable(tab, find_tests_data, STR_LENGTH);
 
     displayResult();

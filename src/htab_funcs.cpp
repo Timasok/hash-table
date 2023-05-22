@@ -14,7 +14,7 @@ static FILE * h_tab_logs = 0;
 #define PRINT_LOG(...)                                                  \
         do {                                                            \
             fprintf(h_tab_logs, __VA_ARGS__);                           \
-        } while(0)   
+        } while(0)
 
 static int openTextLogs()
 {

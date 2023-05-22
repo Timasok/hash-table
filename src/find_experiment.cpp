@@ -68,7 +68,7 @@ int findInTable(Hash_Table * table, const char * tests_file, size_t max_str_leng
 
     const char * words = file_buf + 2*sizeof(size_t);
 
-#ifndef OPT_ALIGNMENT
+#ifndef OPT_ALIGN
     char * word = (char *)calloc(max_str_length, sizeof(char));
 #endif
 
@@ -76,9 +76,9 @@ int findInTable(Hash_Table * table, const char * tests_file, size_t max_str_leng
 
     for(size_t idx = 0; idx < number_of_tests; idx++)
     {
-        word_index = ((idx%2 == 0) ? idx/2 : number_of_tests- (idx+1)/2);
+        word_index = ((idx%2 == 0) ? idx/2 : number_of_tests-(idx+1)/2);
 
-#ifdef OPT_ALIGNMENT
+#ifdef OPT_ALIGN
         MEASURE_TIME(average_time,+=, getWord(table, words + word_index*max_str_length), timer);
 #else
         strncpy(word, words + word_index*max_str_length, max_str_length);
@@ -94,7 +94,7 @@ int findInTable(Hash_Table * table, const char * tests_file, size_t max_str_leng
 
 #ifdef NO_OPT
     free(word);
-#elif defined OPT_ALIGNMENT
+#elif defined OPT_ALIGN
 #endif
 
     free(file_buf);

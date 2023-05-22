@@ -12,8 +12,8 @@ GRAPH_DUMP_DIR = ./lib/list/graph_dumps/
 OBJ_DIR = ./obj/
 
 I_FLAG := -I./lib/stack/include/ -I./lib/list/include/ -I./lib/ -I./ -I./include/ -I./config
-L_FLAGS := -no-pie
-O_FLAGS := -O3
+# L_FLAGS := -no-pie
+O_FLAGS := -O3  -march=native
 CFLAGS  := -Wno-format -Wno-write-strings -Wno-unused-result #-g -fsanitize=address 
 CFLAGS_NO_SANITIZER := -Wno-format -Wno-write-strings -Wno-unused-result -g
 
